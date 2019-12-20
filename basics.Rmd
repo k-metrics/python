@@ -1,0 +1,180 @@
+---
+title: "Basics"
+# author: "Sampo Suzuki"
+# date: "2019/12/20"
+output:
+  html_document:
+    code_folding: none
+    df_print: paged
+    highlight: textmate
+    md_extensions: -ascii_identifiers
+    theme: united
+    toc: yes
+    toc_float:
+      collapsed: yes
+      smooth_scroll: no
+    self_contained: no
+---
+
+<!-- "default", "cerulean", "journal", "flatly", "darkly", "readable", "spacelab", "united", "cosmo", "lumen", "paper", "sandstone", "simplex", "yeti" -->
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{css, include=FALSE}
+h1 {border-bottom: solid 2.5px;}
+h2 {border-bottom: solid 2.0px;}
+h3 {border-bottom: solid 1.5px;}
+h4 {border-bottom: solid 1.0px;}
+
+/*見出しの最初の文字のみ大きくする
+h1:first-letter {font-size: 1.25em;}*/
+```
+
+
+PythonとRの実行コードの区別するために実行結果のプロンプトをPythonとRで変えてあります。
+Pythonの場合は **`>>>`** 、Rの場合は **`##`** となっています。
+
+
+
+# Types（型）
+
+
+## Base Types（データ型）
+PythonにおけるBase Typesとは変数に入れることができるデータの型を意味するとともにデータが一つしか入らない変数型（スカラー変数）も意味していますが、ここでは前者の意味で用いています。
+
+Type     | Python      | R           | Memo
+---------|-------------|-------------|-----------
+論理型   | `bool`      | `logical`   | Pythonは`True/False`
+整数型   | `int`       | `integer`   | Rでは明示的に`L`を付けて表現できる
+実数型   | `float`     | `double`, `numeric` | 倍精度浮動小数（64bit）
+複素数型 | N/A         | `complex`   | 
+文字型　 | `str`       | `character` | シングルクォートまたはダブルクオートで囲む
+日付型   | N/A         | `Date`      | Rの日付型はPOSIX型もあり
+バイト型 | `bytes`     | N/A         | 
+
+Pythonの浮動小数は`float`ですがビット長は64bitの倍精度になっています。
+
+　  
+
+### Python sample code
+```{python, comment=">>>"}
+bool(0)
+int(10.0)
+float(10)
+# Python code
+str("Python")
+bytes(b"binary\order\xfe")
+```
+
+　  
+
+## Container Types（変数型）
+PythonにおけるContainer Typesとは複数のデータを入れるための箱すなわち変数の型を意味していますが、下表ではスカラー型も変数型の一つとして整理しています。
+
+Type     | Python      | R           | Memo
+---------|-------------|-------------|-----------
+スカラー型 | `bool`, `int`, `float`, `str`, `bytes` | N/A | データが一つしか入らない変数型
+ベクトル型 | `list`, `tuple`, `dict`, `set` | `c`           | Rの変数は基本的にベクトル型
+行列型     | N/A       | `matrix`    | 特殊なベクトル型
+配列型     | N/A       | `array`     | 特殊なベクトル型
+因子型     | N/A       | `factor, order` | インデックス付きのベクトル型
+データフレーム型 | N/A | `data.frame` | 等長のベクトル型集合
+リスト型   | N/A       | `list`       | 不等長のベクトル型集合
+
+Pythonにおけるベクトル型の変数は順序型（シーケンス型）とキー（コンテナ）型に大別できます。
+
+Type                        | Description
+----------------------------|---------------------------------------------------
+Ordered Sequences（順序型） | データの格納順に意味があり、インデックスによる参照が可能
+Key Containers （キー型）   | データの格納順に意味はなく、各値はユニークでなければならない
+
+　  
+
+## Ordered Sequences（順序型）
+では、順序型から見て見ます。順序型はその名が示すようにデータの格納順序に意味があります。格納順にインデックスが割り当てられるので、インデックスを用いた高速な参照が可能です。
+
+### list
+Pythonの`list`型変数はRでいうところのベクトル型に相当します。
+```{python, comment=">>>"}
+list([1, 5, 9])
+list(["A", "B", "C", "D"])
+```
+
+ただし、一番の違いは複数のデータ型を一つの変数の中に混在させることが可能な点です。
+```{python, comment=">>>"}
+list([1, "A", 5.1, True])
+```
+
+ですので、Pythonの`list`型変数はRにおけるベクトル変数よりはリスト型変数（`list`）の方が近いといえます。
+```{r}
+list(1, "A", 5.1, TRUE)
+```
+
+`list`型変数の内部を参照する際は`[]`でインデックス番号を指定します。Rと異なりインデックスは`0`から始まる点に注意してください。
+```{python, comment=">>>"}
+x = list([1, "A", 5.1, True])
+x[1]
+```
+
+
+#### 強制型変換
+Rのベクトル型変数では複数のデータ型が混在する場合、強制型変換により最上位のデータ型へ変換されますが、Pythonでは型変換されません。
+```{r}
+c(1L, "A", 5.1, TRUE)
+```
+
+```{python, comment=">>>"}
+list([1, "A", 5.1, True])
+```
+
+　  
+
+### tuple
+Pythonの`list`型と似て非なるものが`tuple`型です。具体的に何が異なるのかは後述します。
+```{python, comment=">>>"}
+tuple((1, "A", 5.1, True))
+```
+
+```{python, comment=">>>"}
+x = tuple((1, "A", 5.1, True))
+x[2]
+```
+
+　  
+
+## Key Containers（キー型）
+次にキー型です。キー型のデータ
+
+### dict
+`dict`型は"key"と"value"の組み合わせでデータ指定します。
+```{python, comment=">>>"}
+dict(a = 1, b = 2, c = 3, d = 1)
+dict(x = "a", y = "b", z = "c")
+```
+
+データを参照するときは"key"を指定することで参照しますので、辞書型とも呼ばれています。
+```{python, comment=">>>"}
+x = dict(a = 1, b = 2, c = 3, d = 1)
+x["a"]
+```
+
+"key"はデータを識別するためのインデックスですので、重複は許されません。
+```{python, comment=">>>", eval=FALSE}
+dict(a = 1, b = 2, c = 3, a = 4)
+```
+```
+>>> Error: keyword argument repeated (<string>, line 1)
+```
+
+### set
+`set`型はユニークなインデックスを作成するようなイメージです。
+```{python, comment=">>>"}
+set({1, 2, 3, 4, 5})
+set({1, 2, 3, 4, 5, 1, 3, 1, 2, 5, 3, 6})
+```
+
+
+# immutables/mutables
+

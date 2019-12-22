@@ -1,0 +1,1104 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>Basics</title>
+
+<script src="basics_files/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="basics_files/bootstrap-3.3.5/css/united.min.css" rel="stylesheet" />
+<script src="basics_files/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="basics_files/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="basics_files/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="basics_files/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="basics_files/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="basics_files/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="basics_files/navigation-1.1/tabsets.js"></script>
+<link href="basics_files/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
+<script src="basics_files/highlightjs-9.12.0/highlight.js"></script>
+<link href="basics_files/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
+<script src="basics_files/pagedtable-1.1/js/pagedtable.js"></script>
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+</style>
+
+
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row-fluid">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">Basics</h1>
+
+</div>
+
+
+<!-- "default", "cerulean", "journal", "flatly", "darkly", "readable", "spacelab", "united", "cosmo", "lumen", "paper", "sandstone", "simplex", "yeti" -->
+<p>R Markdownではコードチャンクの区分を表示する方法がありませんので、PythonとRの実行コードの区別するために実行結果のプロンプトをPythonとRで変えてあります。Pythonの場合は <strong><code>&gt;&gt;</code></strong> 、Rの場合は <strong><code>##</code></strong> となっています。</p>
+<p>　</p>
+<div id="変数" class="section level1">
+<h1>変数</h1>
+<p>Pythonの変数はRと同様にC言語のような変数宣言をする必要はありません。利用したい変数に直接、値（データ）を代入することで任意の変数が作成できます。例えば整数値をもつ変数は以下のように作成します。</p>
+<p>　</p>
+<div id="python" class="section level4">
+<h4><em>Python</em></h4>
+<pre class="python"><code>x = 10
+print(x, type(x), sep=&quot;, &quot;)</code></pre>
+<pre><code>&gt;&gt; 10, &lt;class &#39;int&#39;&gt;</code></pre>
+<p>　</p>
+</div>
+<div id="r" class="section level4">
+<h4><em>R</em></h4>
+<pre class="r"><code>r &lt;- 10L
+print(c(r, class(r)))</code></pre>
+<pre><code>## [1] &quot;10&quot;      &quot;integer&quot;</code></pre>
+<p>　</p>
+<p>また、Rと同様に作成した変数を上書きして別のデータを代入することも可能です。先程作成した整数値を代入した変数 <code>x</code> に実数（浮動小数点数）を代入すると以下のように変数の値と変数の型が変わることが分かります。</p>
+<p>　</p>
+</div>
+<div id="python-1" class="section level4">
+<h4><em>Python</em></h4>
+<pre class="python"><code>print(x, type(x), sep=&quot;, &quot;)</code></pre>
+<pre><code>&gt;&gt; 10, &lt;class &#39;int&#39;&gt;</code></pre>
+<pre class="python"><code>x = 10.1
+print(x, type(x), sep=&quot;, &quot;)</code></pre>
+<pre><code>&gt;&gt; 10.1, &lt;class &#39;float&#39;&gt;</code></pre>
+<p>　</p>
+</div>
+<div id="r-1" class="section level4">
+<h4><em>R</em></h4>
+<pre class="r"><code>print(c(r, class(r)))</code></pre>
+<pre><code>## [1] &quot;10&quot;      &quot;integer&quot;</code></pre>
+<pre class="r"><code>r &lt;- 10.1
+print(c(r, class(r)))</code></pre>
+<pre><code>## [1] &quot;10.1&quot;    &quot;numeric&quot;</code></pre>
+<p>　</p>
+</div>
+<div id="types型" class="section level2">
+<h2>Types（型）</h2>
+<p>変数に代入できるデータにはR言語と同様に型（Type）があります。扱える型（以降、データ型）には以下のようなものがあります。</p>
+<table>
+<thead>
+<tr class="header">
+<th>Type</th>
+<th>Python</th>
+<th>R</th>
+<th>Memo</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>論理型</td>
+<td><code>True</code>, <code>False</code></td>
+<td><code>TRUE</code>, <code>FALSE</code></td>
+<td>1/0の真偽型（Boolean）</td>
+</tr>
+<tr class="even">
+<td>整数型</td>
+<td>1, 2, 3, …</td>
+<td>1L, 2L, …</td>
+<td>RはLをつけることで明示的に整数型を示す</td>
+</tr>
+<tr class="odd">
+<td>実数型</td>
+<td>1.0, 1.1, …</td>
+<td>1, 1.0, …</td>
+<td>倍精度浮動小数（64bit）</td>
+</tr>
+<tr class="even">
+<td>複素数型</td>
+<td>1 + 1j, …</td>
+<td>1 + 1i, …</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>文字型　</td>
+<td>“string”</td>
+<td>“string”</td>
+<td>クォート（シングルまたはダブル）で囲む</td>
+</tr>
+<tr class="even">
+<td>日付型</td>
+<td>N/A</td>
+<td>Date, POSIX</td>
+<td>Ptyhonで日付型を扱うにはパッケージ読み込みが必要</td>
+</tr>
+<tr class="odd">
+<td>バイト型</td>
+<td>バイナリデータ</td>
+<td>N/A</td>
+<td>Ptyhonでは文字列をバイナリ形式として扱える</td>
+</tr>
+</tbody>
+</table>
+<p>データ型を確認してみます。</p>
+<p>　</p>
+<div id="python-2" class="section level4">
+<h4><em>Python</em></h4>
+<pre class="python"><code>type(True)</code></pre>
+<pre><code>&gt;&gt; &lt;class &#39;bool&#39;&gt;</code></pre>
+<pre class="python"><code>type(1)</code></pre>
+<pre><code>&gt;&gt; &lt;class &#39;int&#39;&gt;</code></pre>
+<pre class="python"><code>type(1.0)</code></pre>
+<pre><code>&gt;&gt; &lt;class &#39;float&#39;&gt;</code></pre>
+<pre class="python"><code>type(1 + 1j)</code></pre>
+<pre><code>&gt;&gt; &lt;class &#39;complex&#39;&gt;</code></pre>
+<pre class="python"><code>type(&quot;string&quot;)</code></pre>
+<pre><code>&gt;&gt; &lt;class &#39;str&#39;&gt;</code></pre>
+<pre class="python"><code>type(b&quot;binary&quot;)</code></pre>
+<pre><code>&gt;&gt; &lt;class &#39;bytes&#39;&gt;</code></pre>
+<p>　</p>
+</div>
+<div id="r-2" class="section level4">
+<h4><em>R</em></h4>
+<pre class="r"><code>class(TRUE)</code></pre>
+<pre><code>## [1] &quot;logical&quot;</code></pre>
+<pre class="r"><code>class(1L)</code></pre>
+<pre><code>## [1] &quot;integer&quot;</code></pre>
+<pre class="r"><code>class(1.0)</code></pre>
+<pre><code>## [1] &quot;numeric&quot;</code></pre>
+<pre class="r"><code>class(1 + 1i)</code></pre>
+<pre><code>## [1] &quot;complex&quot;</code></pre>
+<pre class="r"><code>class(as.Date(&quot;2020/1/1&quot;))</code></pre>
+<pre><code>## [1] &quot;Date&quot;</code></pre>
+<pre class="r"><code>class(&quot;string&quot;)</code></pre>
+<pre><code>## [1] &quot;character&quot;</code></pre>
+<p>　</p>
+</div>
+</div>
+<div id="container-types変数型" class="section level2">
+<h2>Container Types（変数型）</h2>
+<p>データを格納する箱（変数）にはR同様に様々な型があります。変数型はスカラー型とベクトル型に大別できます。スカラー型とは任意のデータが一つだけ入る変数型、ベクトル型は任意のデータが複数入る変数型です。</p>
+<table>
+<thead>
+<tr class="header">
+<th>Type</th>
+<th>Python</th>
+<th>R</th>
+<th>Memo</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>スカラー型</td>
+<td><code>bool</code>, <code>int</code>, <code>float</code>, <code>complex</code>, <code>str</code>, <code>bytes</code></td>
+<td>N/A</td>
+<td>データが一つしか入らない変数型</td>
+</tr>
+<tr class="even">
+<td>ベクトル型</td>
+<td><code>list</code>, <code>tuple</code>, <code>dict</code>, <code>set</code></td>
+<td><code>c</code></td>
+<td>Rの変数は基本的にベクトル型</td>
+</tr>
+<tr class="odd">
+<td>行列型</td>
+<td>N/A</td>
+<td><code>matrix</code></td>
+<td>特殊なベクトル型</td>
+</tr>
+<tr class="even">
+<td>配列型</td>
+<td>N/A</td>
+<td><code>array</code></td>
+<td>特殊なベクトル型</td>
+</tr>
+<tr class="odd">
+<td>因子型</td>
+<td>N/A</td>
+<td><code>factor, order</code></td>
+<td>インデックス付きのベクトル型</td>
+</tr>
+<tr class="even">
+<td>データフレーム型</td>
+<td>N/A</td>
+<td><code>data.frame</code></td>
+<td>複数の等長ベクトル型の集合</td>
+</tr>
+<tr class="odd">
+<td>リスト型</td>
+<td>N/A</td>
+<td><code>list</code></td>
+<td>複数の不等長ベクトル型の集合</td>
+</tr>
+</tbody>
+</table>
+<p>　</p>
+</div>
+<div id="スカラー型変数" class="section level2">
+<h2>スカラー型変数</h2>
+<p>Pythonのスカラー型変数は基本的に変数型と同義と考えてください。ちなみにRではスカラー型変数という概念がありませんので長さ <span class="math inline">\(1\)</span> のベクトル型変数を用います。</p>
+<p>　</p>
+<div id="論理型真偽型ブール型boolean" class="section level3">
+<h3>論理型（真偽型・ブール型・Boolean）</h3>
+<p>Pythonの論理型は <code>True</code>, <code>False</code> と頭文字だけ大文字になります。Rや他の言語と同様に <code>1</code>, <code>0</code> と等価です。</p>
+<p>　</p>
+<div id="python-3" class="section level4">
+<h4><em>Python</em></h4>
+<pre class="python"><code>b = True
+print(b, type(b), sep =&quot;, &quot;)</code></pre>
+<pre><code>&gt;&gt; True, &lt;class &#39;bool&#39;&gt;</code></pre>
+<pre class="python"><code>b == 1</code></pre>
+<pre><code>&gt;&gt; True</code></pre>
+<p>　</p>
+</div>
+<div id="r-3" class="section level4">
+<h4><em>R</em></h4>
+<pre class="r"><code>B &lt;- TRUE
+print(c(B, class(B)))</code></pre>
+<pre><code>## [1] &quot;TRUE&quot;    &quot;logical&quot;</code></pre>
+<pre class="r"><code>B == 1</code></pre>
+<pre><code>## [1] TRUE</code></pre>
+<p>　</p>
+</div>
+</div>
+<div id="整数型" class="section level3">
+<h3>整数型</h3>
+<p>Pythonの整数型はRや他の言語と同様です。</p>
+<p>　</p>
+<div id="python-4" class="section level4">
+<h4><em>Python</em></h4>
+<p>実数を整数に変換する場合には <code>int</code> 関数を用います。</p>
+<pre class="python"><code>i = 1
+print(i, type(i), sep =&quot;, &quot;)</code></pre>
+<pre><code>&gt;&gt; 1, &lt;class &#39;int&#39;&gt;</code></pre>
+<pre class="python"><code>int(1.6)</code></pre>
+<pre><code>&gt;&gt; 1</code></pre>
+<p>　</p>
+</div>
+<div id="r-4" class="section level4">
+<h4><em>R</em></h4>
+<p>Rでは整数型は <code>L</code> を付与して明示的に指定する必要があります。<code>L</code> がない場合は実数型として扱われます。</p>
+<pre class="r"><code>I = 1L
+print(c(I, class(I)))</code></pre>
+<pre><code>## [1] &quot;1&quot;       &quot;integer&quot;</code></pre>
+<pre class="r"><code>as.integer(1.6)</code></pre>
+<pre><code>## [1] 1</code></pre>
+<p>　</p>
+</div>
+</div>
+<div id="実数型浮動小数点数型" class="section level3">
+<h3>実数型（浮動小数点数型）</h3>
+<p>Pythonの実数型は <code>float</code> 型と呼ばれますが、ビット長 <span class="math inline">\(64\)</span> bitの倍精度浮動小数点数です。C言語の <code>float</code> 型（単精度浮動小数点数）とは異なります。整数を浮動小数点数に変換すえるには <code>float</code> 関数を用います。</p>
+<p>　</p>
+<div id="python-5" class="section level4">
+<h4><em>Python</em></h4>
+<pre class="python"><code>r = 1.1
+print(r, type(r), sep =&quot;, &quot;)</code></pre>
+<pre><code>&gt;&gt; 1.1, &lt;class &#39;float&#39;&gt;</code></pre>
+<pre class="python"><code>float(1)</code></pre>
+<pre><code>&gt;&gt; 1.0</code></pre>
+<p>なお、少数点がない数値は整数型として扱われます。</p>
+<pre class="python"><code>r = 1
+print(r, type(r), sep =&quot;, &quot;)</code></pre>
+<pre><code>&gt;&gt; 1, &lt;class &#39;int&#39;&gt;</code></pre>
+<p>　</p>
+</div>
+<div id="r-5" class="section level4">
+<h4><em>R</em></h4>
+<p>Rでは小数点がなくても実数として扱われます。</p>
+<pre class="r"><code>R = 1
+print(c(R, class(R)))</code></pre>
+<pre><code>## [1] &quot;1&quot;       &quot;numeric&quot;</code></pre>
+<pre class="r"><code>as.double(1L)</code></pre>
+<pre><code>## [1] 1</code></pre>
+<p>　</p>
+</div>
+</div>
+<div id="複素数型" class="section level3">
+<h3>複素数型</h3>
+<p>複素数型については省略します。</p>
+<p>　</p>
+</div>
+<div id="文字型文字列型" class="section level3">
+<h3>文字型（文字列型）</h3>
+<p>Pythonの文字型はRの文字型と同様にクォート（<code>'</code> または <code>&quot;</code>）で囲んで指定します。</p>
+<p>　</p>
+<div id="python-6" class="section level4">
+<h4><em>Python</em></h4>
+<pre class="python"><code>s = &quot;string&quot;
+print(s, type(s), sep=&quot;, &quot;)</code></pre>
+<pre><code>&gt;&gt; string, &lt;class &#39;str&#39;&gt;</code></pre>
+<p>Rと異なるのは複数行の文字列が指定できる点です。</p>
+<p>　</p>
+</div>
+<div id="python-7" class="section level4">
+<h4><em>Python</em></h4>
+<pre class="python"><code>s = &quot;&quot;&quot;multi line string line1
+line2
+line3&quot;&quot;&quot;
+print(s, type(s), sep=&quot;, &quot;)</code></pre>
+<pre><code>&gt;&gt; multi line string line1
+&gt;&gt; line2
+&gt;&gt; line3, &lt;class &#39;str&#39;&gt;</code></pre>
+<p>　</p>
+</div>
+<div id="r-6" class="section level4">
+<h4><em>R</em></h4>
+<pre class="r"><code>S = &quot;sting&quot;
+print(c(S, class(S)))</code></pre>
+<pre><code>## [1] &quot;sting&quot;     &quot;character&quot;</code></pre>
+<p>　</p>
+</div>
+</div>
+<div id="バイト型" class="section level3">
+<h3>バイト型</h3>
+<p>バイト型については省略します。</p>
+<p>　</p>
+</div>
+</div>
+<div id="ベクトル型変数" class="section level2">
+<h2>ベクトル型変数</h2>
+<p>ベクトル型変数は、任意の値を複数格納できる変数です。</p>
+<table>
+<thead>
+<tr class="header">
+<th>Type</th>
+<th>Func.</th>
+<th>Operator</th>
+<th>Memo</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>リスト型</td>
+<td><code>list</code></td>
+<td><code>[]</code></td>
+<td>基本となるシーケンシャルなベクトル型</td>
+</tr>
+<tr class="even">
+<td>タプル型</td>
+<td><code>tuple</code></td>
+<td><code>()</code></td>
+<td>値の変更できないリスト型</td>
+</tr>
+<tr class="odd">
+<td>辞書型</td>
+<td><code>dict</code></td>
+<td><code>{}</code></td>
+<td>ユニークなキーと値がセットになったベクトル型</td>
+</tr>
+<tr class="even">
+<td>集合型</td>
+<td><code>set</code></td>
+<td><code>{}</code></td>
+<td>ユニークな値のベクトル型</td>
+</tr>
+</tbody>
+</table>
+<p>　</p>
+<div id="リスト型list" class="section level3">
+<h3>リスト型（list）</h3>
+<p>Pythonのリスト型変数は最も基本となるベクトル型の変数です。<code>list</code>関数、または、<code>[]</code>オペレーターを使って作成します。</p>
+<p>　</p>
+<div id="python-8" class="section level4">
+<h4><em>Python</em></h4>
+<pre class="python"><code>x = [1, 2, 3]
+print(x, type(x), sep=&quot;, &quot;)</code></pre>
+<pre><code>&gt;&gt; [1, 2, 3], &lt;class &#39;list&#39;&gt;</code></pre>
+<pre class="python"><code>x = list([5, 6, 7, 8])
+print(x, type(x), sep=&quot;, &quot;)</code></pre>
+<pre><code>&gt;&gt; [5, 6, 7, 8], &lt;class &#39;list&#39;&gt;</code></pre>
+<p>Rと最も異なる点は異なるデータ型を混在できる点です。</p>
+<p>　</p>
+</div>
+<div id="python-9" class="section level4">
+<h4><em>Python</em></h4>
+<pre class="python"><code>x = [1, 2, &quot;a&quot;, 4, 5 + 2j]
+print(x, type(x))</code></pre>
+<pre><code>&gt;&gt; [1, 2, &#39;a&#39;, 4, (5+2j)] &lt;class &#39;list&#39;&gt;</code></pre>
+<p>　</p>
+</div>
+<div id="r-7" class="section level4">
+<h4><em>R</em></h4>
+<pre class="r"><code>X = c(1L, 2L, 3L)
+print(c(X, class(X)))</code></pre>
+<pre><code>## [1] &quot;1&quot;       &quot;2&quot;       &quot;3&quot;       &quot;integer&quot;</code></pre>
+<p>Rの場合、異なるデータを混在した場合、強制型変換が行われ最上位のデータ型に統一されます。</p>
+<p>　</p>
+</div>
+<div id="r-8" class="section level4">
+<h4><em>R</em></h4>
+<pre class="r"><code>X = c(1L, 2, 3 + 5i)
+print(c(X, class(X)))</code></pre>
+<pre><code>## [1] &quot;1+0i&quot;    &quot;2+0i&quot;    &quot;3+5i&quot;    &quot;complex&quot;</code></pre>
+<p>　</p>
+</div>
+</div>
+<div id="タプル型tuple" class="section level3">
+<h3>タプル型（tuple）</h3>
+<p>Pythonのタプル型（<code>tuple</code>）はリスト型変数と同様のベクトル型の変数です。<code>tuple</code>関数、または、<code>()</code> オペレータを使って作成します。リスト型との違いはデータの変更ができない点です。</p>
+<div id="python-10" class="section level4">
+<h4><em>Python</em></h4>
+<pre class="python"><code>x = (1, 2, 3)
+print(x, type(x), sep=&quot;, &quot;)</code></pre>
+<pre><code>&gt;&gt; (1, 2, 3), &lt;class &#39;tuple&#39;&gt;</code></pre>
+<pre class="python"><code>x = tuple((5, 6, 7, 8))
+print(x, type(x), sep=&quot;, &quot;)</code></pre>
+<pre><code>&gt;&gt; (5, 6, 7, 8), &lt;class &#39;tuple&#39;&gt;</code></pre>
+<p>　</p>
+</div>
+</div>
+<div id="辞書型dict" class="section level3">
+<h3>辞書型（dict）</h3>
+<p>Pythonの辞書型（<code>dict</code>）は、キーと値の組み合わせでデータを管理できるベクトル型変数です。<code>dict</code>関数または<code>{}</code>オペレータを使って作成します。指定の際は必ず<code>key:value</code>の組み合わせで指定します。Rの因子型（factor）に似ていますが、キーはユニークでなければなりません。</p>
+<p>　</p>
+<div id="python-11" class="section level4">
+<h4><em>Python</em></h4>
+<pre class="python"><code>x = {&quot;key1&quot;:1, &quot;key2&quot;:2, &quot;key3&quot;:3}
+print(x, type(x), sep=&quot;, &quot;)</code></pre>
+<pre><code>&gt;&gt; {&#39;key2&#39;: 2, &#39;key3&#39;: 3, &#39;key1&#39;: 1}, &lt;class &#39;dict&#39;&gt;</code></pre>
+<pre class="python"><code>x = dict({&quot;key1&quot;:1, &quot;key2&quot;:2, &quot;key3&quot;:3, &quot;key4&quot;:&quot;key&quot;})
+print(x, type(x), sep=&quot;, &quot;)</code></pre>
+<pre><code>&gt;&gt; {&#39;key2&#39;: 2, &#39;key4&#39;: &#39;key&#39;, &#39;key3&#39;: 3, &#39;key1&#39;: 1}, &lt;class &#39;dict&#39;&gt;</code></pre>
+<p>　</p>
+</div>
+<div id="r-9" class="section level4">
+<h4><em>R</em></h4>
+<p>Rの因子型はデータからユニークキーを作成します。</p>
+<pre class="r"><code>X = factor(c(1, 2, 3, 1, 5))
+X</code></pre>
+<pre><code>## [1] 1 2 3 1 5
+## Levels: 1 2 3 5</code></pre>
+<p>　</p>
+</div>
+</div>
+<div id="集合型set" class="section level3">
+<h3>集合型（set）</h3>
+<p>Pythonの集合型（<code>set</code>）は、<code>set</code>関数または<code>{}</code>を使って作成します。重複するデータを指定してもRの因子型変数の<code>Levels</code>に相当するユニークなデータを変数に格納します。文字列を指定した場合は一文字つづに分解して格納します。</p>
+<p>　</p>
+<div id="python-12" class="section level4">
+<h4><em>Python</em></h4>
+<pre class="python"><code>x = {4, 2, 3, 1, 1, 5, 2, 1, 1}
+print(x, type(x), sep=&quot;, &quot;)</code></pre>
+<pre><code>&gt;&gt; {1, 2, 3, 4, 5}, &lt;class &#39;set&#39;&gt;</code></pre>
+<pre class="python"><code>x = set(&quot;strings&quot;)
+print(x, type(x), sep=&quot;, &quot;)</code></pre>
+<pre><code>&gt;&gt; {&#39;s&#39;, &#39;r&#39;, &#39;i&#39;, &#39;t&#39;, &#39;g&#39;, &#39;n&#39;}, &lt;class &#39;set&#39;&gt;</code></pre>
+<p>　</p>
+</div>
+</div>
+</div>
+</div>
+<div id="演算子" class="section level1">
+<h1>演算子</h1>
+<div id="単項演算子" class="section level2">
+<h2>単項演算子</h2>
+<p>単項演算子は文字通り一つの変数に作用する演算子です。Pythonの単項演算子はRと同様にマイナスならびに否定の演算子があります。</p>
+<table>
+<thead>
+<tr class="header">
+<th>Type</th>
+<th>Python</th>
+<th>R</th>
+<th>Memo</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>マイナス</td>
+<td><code>-</code></td>
+<td><code>-</code></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>否定</td>
+<td><code>not()</code></td>
+<td><code>!</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>　</p>
+<div id="python-13" class="section level4">
+<h4><em>Python</em></h4>
+<pre class="python"><code>x = 3
+print(-x, type(-x), sep=&quot;, &quot;)</code></pre>
+<pre><code>&gt;&gt; -3, &lt;class &#39;int&#39;&gt;</code></pre>
+<pre class="python"><code>not(True)</code></pre>
+<pre><code>&gt;&gt; False</code></pre>
+<p>　</p>
+</div>
+<div id="r-10" class="section level4">
+<h4><em>R</em></h4>
+<pre class="r"><code>x &lt;- 3L
+print(c(-x, class(-x)))</code></pre>
+<pre><code>## [1] &quot;-3&quot;      &quot;integer&quot;</code></pre>
+<pre class="r"><code>!TRUE</code></pre>
+<pre><code>## [1] FALSE</code></pre>
+<p>　</p>
+</div>
+</div>
+<div id="算術演算子二項演算子" class="section level2">
+<h2>算術演算子（二項演算子）</h2>
+<p>Pythonの算術演算子にはRの算術演算子と同様に以下の演算子があります。</p>
+<table>
+<thead>
+<tr class="header">
+<th>Type</th>
+<th>Python</th>
+<th>R</th>
+<th>Memo</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>加算</td>
+<td><code>+</code></td>
+<td><code>+</code></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>減算</td>
+<td><code>-</code></td>
+<td><code>-</code></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>乗算</td>
+<td><code>*</code></td>
+<td><code>*</code></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>除算</td>
+<td><code>/</code></td>
+<td><code>/</code></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>累乗</td>
+<td><code>**</code></td>
+<td><code>^</code></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>剰余</td>
+<td><code>%</code></td>
+<td><code>%%</code></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>切捨</td>
+<td><code>//</code></td>
+<td><code>%/%</code></td>
+<td>整数商</td>
+</tr>
+</tbody>
+</table>
+<p>　</p>
+<div id="python-14" class="section level4">
+<h4><em>Python</em></h4>
+<pre class="python"><code>1 + 2</code></pre>
+<pre><code>&gt;&gt; 3</code></pre>
+<pre class="python"><code>2 - 3</code></pre>
+<pre><code>&gt;&gt; -1</code></pre>
+<pre class="python"><code>3 * 4</code></pre>
+<pre><code>&gt;&gt; 12</code></pre>
+<pre class="python"><code>5 / 6</code></pre>
+<pre><code>&gt;&gt; 0.8333333333333334</code></pre>
+<pre class="python"><code>6 ** 7</code></pre>
+<pre><code>&gt;&gt; 279936</code></pre>
+<pre class="python"><code>7 % 8</code></pre>
+<pre><code>&gt;&gt; 7</code></pre>
+<pre class="python"><code>10 // 3</code></pre>
+<pre><code>&gt;&gt; 3</code></pre>
+<p>　</p>
+</div>
+<div id="r-11" class="section level4">
+<h4><em>R</em></h4>
+<pre class="r"><code>1 + 2</code></pre>
+<pre><code>## [1] 3</code></pre>
+<pre class="r"><code>2 - 3</code></pre>
+<pre><code>## [1] -1</code></pre>
+<pre class="r"><code>3 * 4</code></pre>
+<pre><code>## [1] 12</code></pre>
+<pre class="r"><code>5 / 6</code></pre>
+<pre><code>## [1] 0.8333333</code></pre>
+<pre class="r"><code>6 ^ 7</code></pre>
+<pre><code>## [1] 279936</code></pre>
+<pre class="r"><code>7 %% 8</code></pre>
+<pre><code>## [1] 7</code></pre>
+<pre class="r"><code>10 %/% 3</code></pre>
+<pre><code>## [1] 3</code></pre>
+<p>　</p>
+</div>
+</div>
+<div id="比較演算子" class="section level2">
+<h2>比較演算子</h2>
+<p>比較演算子は関係演算子とも呼ばれる二つの変数の関係を調べる演算子です。返り値は論理型になります。</p>
+<table>
+<thead>
+<tr class="header">
+<th>言語</th>
+<th>大なり</th>
+<th>小なり</th>
+<th>以上</th>
+<th>以下</th>
+<th>等しい</th>
+<th>等しくない</th>
+<th>Memo</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Python</td>
+<td><code>&gt;</code></td>
+<td><code>&lt;</code></td>
+<td><code>&gt;=</code></td>
+<td><code>&lt;=</code></td>
+<td><code>==</code></td>
+<td><code>!=</code></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>R</td>
+<td><code>&gt;</code></td>
+<td><code>&lt;</code></td>
+<td><code>&gt;=</code></td>
+<td><code>&lt;=</code></td>
+<td><code>==</code></td>
+<td><code>!=</code></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<pre class="python"><code>1 &gt; 2</code></pre>
+<pre><code>&gt;&gt; False</code></pre>
+<pre class="python"><code>2 &lt; 3</code></pre>
+<pre><code>&gt;&gt; True</code></pre>
+<pre class="python"><code>3 &gt;= 4</code></pre>
+<pre><code>&gt;&gt; False</code></pre>
+<pre class="python"><code>4 &lt;= 5</code></pre>
+<pre><code>&gt;&gt; True</code></pre>
+<pre class="python"><code>5 == 6</code></pre>
+<pre><code>&gt;&gt; False</code></pre>
+<pre class="python"><code>6 != 7</code></pre>
+<pre><code>&gt;&gt; True</code></pre>
+<p>　</p>
+</div>
+<div id="論理演算子" class="section level2">
+<h2>論理演算子</h2>
+<table>
+<thead>
+<tr class="header">
+<th>言語</th>
+<th>AND</th>
+<th>OR</th>
+<th>XOR</th>
+<th>NOT</th>
+<th>Memo</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Python</td>
+<td><code>and</code></td>
+<td><code>or</code></td>
+<td>N/A</td>
+<td><code>not</code></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>R</td>
+<td><code>&amp;&amp;</code></td>
+<td><code>||</code></td>
+<td><code>xor</code></td>
+<td><code>!</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>　</p>
+<div id="python-15" class="section level4">
+<h4><em>Python</em></h4>
+<pre class="python"><code>1 and 0</code></pre>
+<pre><code>&gt;&gt; 0</code></pre>
+<pre class="python"><code>1 or 0</code></pre>
+<pre><code>&gt;&gt; 1</code></pre>
+<pre class="python"><code>not 0</code></pre>
+<pre><code>&gt;&gt; True</code></pre>
+<p>　</p>
+</div>
+<div id="r-12" class="section level4">
+<h4><em>R</em></h4>
+<pre class="r"><code>1 &amp;&amp; 0</code></pre>
+<pre><code>## [1] FALSE</code></pre>
+<pre class="r"><code>1 || 0</code></pre>
+<pre><code>## [1] TRUE</code></pre>
+<pre class="r"><code>xor(1, 0)</code></pre>
+<pre><code>## [1] TRUE</code></pre>
+<pre class="r"><code>!TRUE</code></pre>
+<pre><code>## [1] FALSE</code></pre>
+<p>　</p>
+</div>
+</div>
+<div id="参照演算子アクセス演算子" class="section level2">
+<h2>参照演算子（アクセス演算子）</h2>
+<p>Pythonでベクトル変数の中身（要素）を参照する場合は参照演算子（<code>[]</code>）を用います。Rと異なりインデックスは <span class="math inline">\(0\)</span> から始まります。</p>
+<table>
+<thead>
+<tr class="header">
+<th>演算子</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>[n]</td>
+<td><span class="math inline">\(n\)</span>番目の要素を参照します</td>
+</tr>
+<tr class="even">
+<td>[n:m]</td>
+<td><span class="math inline">\(n\)</span>番目から<span class="math inline">\(m-1\)</span>番目の要素を参照します</td>
+</tr>
+<tr class="odd">
+<td>[n:]</td>
+<td><span class="math inline">\(n\)</span>番目以降の要素を参照します</td>
+</tr>
+<tr class="even">
+<td>[:m]</td>
+<td><span class="math inline">\(m-1\)</span>番目までの要素を参照します</td>
+</tr>
+<tr class="odd">
+<td>[n:m:s]</td>
+<td><span class="math inline">\(n\)</span>番目から<span class="math inline">\(m-1\)</span>番目の要素を<span class="math inline">\(s\)</span>ごとに参照します</td>
+</tr>
+</tbody>
+</table>
+<p>　</p>
+<div id="python-16" class="section level4">
+<h4><em>Python</em></h4>
+<pre class="python"><code>x = list([1, 2, 3, 4, 5, 6, 7, 8, 9, 0])
+x</code></pre>
+<pre><code>&gt;&gt; [1, 2, 3, 4, 5, 6, 7, 8, 9, 0]</code></pre>
+<pre class="python"><code>x[0]</code></pre>
+<pre><code>&gt;&gt; 1</code></pre>
+<pre class="python"><code>x[0:3]</code></pre>
+<pre><code>&gt;&gt; [1, 2, 3]</code></pre>
+<pre class="python"><code>x[5:]</code></pre>
+<pre><code>&gt;&gt; [6, 7, 8, 9, 0]</code></pre>
+<pre class="python"><code>x[:4]</code></pre>
+<pre><code>&gt;&gt; [1, 2, 3, 4]</code></pre>
+<pre class="python"><code>x[0:10:2]</code></pre>
+<pre><code>&gt;&gt; [1, 3, 5, 7, 9]</code></pre>
+<p>　</p>
+</div>
+<div id="r-13" class="section level4">
+<h4><em>R</em></h4>
+<p>Rでも同様の参照が可能です。</p>
+<pre class="r"><code>X &lt;- c(1:9, 0)
+X</code></pre>
+<pre><code>##  [1] 1 2 3 4 5 6 7 8 9 0</code></pre>
+<pre class="r"><code>X[1]</code></pre>
+<pre><code>## [1] 1</code></pre>
+<pre class="r"><code>X[1:3]</code></pre>
+<pre><code>## [1] 1 2 3</code></pre>
+</div>
+</div>
+</div>
+
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = false;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

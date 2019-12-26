@@ -3194,7 +3194,7 @@ Pythonのリスト型と最も似ているのはRではベクトル型です。<
 <pre><code>&gt;&gt; {'key3': 3, 'key1': 1, 'key2': 2}, &lt;class 'dict'&gt;</code></pre>
 <div class="sourceCode" id="cb83" title="Python"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb83-1" data-line-number="1">x <span class="op">=</span> <span class="bu">dict</span>({<span class="st">&quot;key1&quot;</span>:<span class="dv">1</span>, <span class="st">&quot;key2&quot;</span>:<span class="dv">2</span>, <span class="st">&quot;key3&quot;</span>:<span class="dv">3</span>, <span class="st">&quot;key4&quot;</span>:<span class="st">&quot;key&quot;</span>})</a>
 <a class="sourceLine" id="cb83-2" data-line-number="2"><span class="bu">print</span>(x, <span class="bu">type</span>(x), sep<span class="op">=</span><span class="st">&quot;, &quot;</span>)</a></code></pre></div>
-<pre><code>&gt;&gt; {'key4': 'key', 'key3': 3, 'key1': 1, 'key2': 2}, &lt;class 'dict'&gt;</code></pre>
+<pre><code>&gt;&gt; {'key3': 3, 'key1': 1, 'key4': 'key', 'key2': 2}, &lt;class 'dict'&gt;</code></pre>
 <p>Rの因子型はデータからユニークキーを作成しますので、似ていますが非なるものと言えます。</p>
 <div class="sourceCode" id="cb85" title="R"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb85-1" data-line-number="1">x &lt;-<span class="st"> </span><span class="kw">factor</span>(<span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">5</span>))</a>
 <a class="sourceLine" id="cb85-2" data-line-number="2">x</a></code></pre></div>
@@ -3210,7 +3210,7 @@ Pythonのリスト型と最も似ているのはRではベクトル型です。<
 <pre><code>&gt;&gt; {1, 2, 3, 4, 5}, &lt;class 'set'&gt;</code></pre>
 <div class="sourceCode" id="cb89" title="Python"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb89-1" data-line-number="1">x <span class="op">=</span> <span class="bu">set</span>(<span class="st">&quot;strings&quot;</span>)</a>
 <a class="sourceLine" id="cb89-2" data-line-number="2"><span class="bu">print</span>(x, <span class="bu">type</span>(x), sep<span class="op">=</span><span class="st">&quot;, &quot;</span>)</a></code></pre></div>
-<pre><code>&gt;&gt; {'r', 'n', 't', 'i', 's', 'g'}, &lt;class 'set'&gt;</code></pre>
+<pre><code>&gt;&gt; {'n', 'g', 'r', 'i', 't', 's'}, &lt;class 'set'&gt;</code></pre>
 <p>Rの <code>levels</code> 関数や <code>uniqe</code> 関数での処理結果に近いと言えます。</p>
 <div class="sourceCode" id="cb91" title="R"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb91-1" data-line-number="1">x &lt;-<span class="st"> </span><span class="kw">factor</span>(<span class="kw">c</span>(<span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">1</span>))</a>
 <a class="sourceLine" id="cb91-2" data-line-number="2"><span class="kw">levels</span>(x)</a></code></pre></div>

@@ -1,19 +1,19 @@
 ---
-title: "Basics"
+title: "Python Basics"
 # author: "Sampo Suzuki"
-# date: "2019/12/20"
+# date: "2019/12/26"
 output:
   html_document:
     code_folding: none
     df_print: paged
-    highlight: textmate
+    highlight: pygments
     md_extensions: -ascii_identifiers
     theme: united
     toc: yes
     toc_float:
       collapsed: yes
       smooth_scroll: no
-    self_contained: no
+    self_contained: yes
 knit: (function(inputFile, encoding) { 
        rmarkdown::render(inputFile,
                          encoding=encoding, 
@@ -22,70 +22,72 @@ knit: (function(inputFile, encoding) {
 
 <!-- "default", "cerulean", "journal", "flatly", "darkly", "readable", "spacelab", "united", "cosmo", "lumen", "paper", "sandstone", "simplex", "yeti" -->
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE, 
-                      engine.path = list('/opt/virtualenvs/r-tensorflow'))
-```
-
-```{css, include=FALSE}
+```{css, echo=FALSE}
 h1 {border-bottom: solid 2.5px;}
 h2 {border-bottom: solid 2.0px;}
 h3 {border-bottom: solid 1.5px;}
 h4 {border-bottom: solid 1.0px; font-size: smaller;}
 
-/*見出しの最初の文字のみ大きくする
-h1:first-letter {font-size: 1.25em;}*/
+/*見出しの最初の文字のみ大きくする*/
+/*h1:first-letter {font-size: 1.25em;}*/
+
+/*コードブロック・タグ*/
+div.sourceCode[title]:before {
+   content: attr(title);
+   color: white;
+   font-size: smaller; font-style: oblique; font-weight: bold;
+   background: #336600;
+   padding: 1px 10px 2px 10px;
+   border-color: #CCCCCC;
+   border-style: solid solid solid solid; border-width: 1px 1px 1px 1px;
+}
 ```
 
-R Markdownではコードチャンクの区分を表示する方法がありませんので、PythonとRの実行コードの区別するために実行結果のプロンプトをPythonとRで変えてあります。Pythonの場合は **`>>`** 、Rの場合は **`##`** となっています。
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, 
+                      engine.path = list('/opt/virtualenvs/r-tensorflow'))
+```
+
+Python勉強会のまとめです。Rと比較する形でまとめています。コーディングスタイルはRのtidyverse style guideに準拠しています。  
+実行結果のプロンプトをPythonの場合は **`>>`** 、Rの場合は **`##`** としています。
 
 　  
 
 # 変数
 Pythonの変数はRと同様にC言語のような変数宣言をする必要はありません。利用したい変数に直接、値（データ）を代入することで任意の変数が作成できます。例えば整数値をもつ変数は以下のように作成します。
 
-　  
-
-#### *Python*
-```{python, comment=">>"}
+```{python, comment=">>", attr.source="title='Python'"}
 x = 10
 print(x, type(x), sep=", ")
 ```
 
-　  
-
-#### *R*
-```{r}
+```{r, attr.source="title='R'"}
 r <- 10L
 print(c(r, class(r)))
 ```
 
 　  
 
-また、Rと同様に作成した変数を上書きして別のデータを代入することも可能です。先程作成した整数値を代入した変数 `x` に実数（浮動小数点数）を代入すると以下のように変数の値と変数の型が変わることが分かります。
+また、Rと同様に作成した変数に上書きして別のデータを代入することが可能です。先程作成した整数型の変数 `x` に実数（浮動小数点数）を代入してみます。
 
-　  
-
-#### *Python*
-```{python, comment=">>"}
+```{python, comment=">>", attr.source="title='Python'"}
 print(x, type(x), sep=", ")
 x = 10.1
 print(x, type(x), sep=", ")
 ```
 
-　  
-
-#### *R*
-```{r}
+```{r, attr.source="title='R'"}
 print(c(r, class(r)))
 r <- 10.1
 print(c(r, class(r)))
 ```
 
+このようにPython、R共に整数型の変数が実数型の変数に変わっていることが分かります。
+
 　  
 
-## Types（型）
-変数に代入できるデータにはR言語と同様に型（Type）があります。扱える型（以降、データ型）には以下のようなものがあります。
+## データ型（Basic Types）
+変数に代入できる値（データ）にはRと同様に型（Type）があります。扱える型（以降、データ型）には以下のようなものがあります。
 
 Type     | Python          | R               | Memo
 ---------|-----------------|-----------------|---------------------------------
@@ -97,177 +99,111 @@ Type     | Python          | R               | Memo
 日付型   | N/A             | Date, POSIX     | Ptyhonで日付型を扱うにはパッケージ読み込みが必要
 バイト型 | バイナリデータ  | N/A             | Ptyhonでは文字列をバイナリ形式として扱える
 
-データ型を確認してみます。
-
 　  
 
-#### *Python*
-```{python, comment=">>"}
+### 論理型（真偽型・ブール型）
+Pythonの論理型は `True` と `False` です。先頭の文字だけが大文字になりますので注意してください。Rや他の言語と同様に `1`, `0` と等価です。論理型に変換するには `bool` 関数を用います。
+```{python, comment=">>", attr.source="title='Python'"}
 type(True)
-type(1)
-type(1.0)
-type(1 + 1j)
-type("string")
-type(b"binary")
+True == 1
+type(bool(0))
 ```
-
-　  
-
-#### *R*
-```{r}
+一方、Rの論理型はすべて大文字です。Python同様に `1`, `0` と等価で、論理型に変換するには `as.logical` 関数を用います。
+```{r, attr.source="title='R'"}
 class(TRUE)
-class(1L)
-class(1.0)
-class(1 + 1i)
-class(as.Date("2020/1/1"))
-class("string")
-```
-
-　  
-
-## Container Types（変数型）
-データを格納する箱（変数）にはR同様に様々な型があります。変数型はスカラー型とベクトル型に大別できます。スカラー型とは任意のデータが一つだけ入る変数型、ベクトル型は任意のデータが複数入る変数型です。
-
-Type     | Python      | R           | Memo
----------|-------------|-------------|-----------------------------------------
-スカラー型 | `bool`, `int`, `float`, `complex`, `str`, `bytes` | N/A | データが一つしか入らない変数型
-ベクトル型 | `list`, `tuple`, `dict`, `set` | `c`           | Rの変数は基本的にベクトル型
-行列型     | N/A       | `matrix`    | 特殊なベクトル型
-配列型     | N/A       | `array`     | 特殊なベクトル型
-因子型     | N/A       | `factor, order` | インデックス付きのベクトル型
-データフレーム型 | N/A | `data.frame` | 複数の等長ベクトル型の集合
-リスト型   | N/A       | `list`       | 複数の不等長ベクトル型の集合
-
-　  
-
-## スカラー型変数
-Pythonのスカラー型変数は基本的に変数型と同義と考えてください。ちなみにRではスカラー型変数という概念がありませんので長さ $1$ のベクトル型変数を用います。
-
-　  
-
-### 論理型（真偽型・ブール型・Boolean）
-Pythonの論理型は `True`, `False` と頭文字だけ大文字になります。Rや他の言語と同様に `1`, `0` と等価です。
-
-　  
-
-#### *Python*
-```{python, comment=">>"}
-b = True
-print(b, type(b), sep =", ")
-b == 1
-```
-
-　  
-
-#### *R*
-```{r}
-B <- TRUE
-print(c(B, class(B)))
-B == 1
+TRUE == 1
+class(as.logical(0))
 ```
 
 　  
 
 ### 整数型
-Pythonの整数型はRや他の言語と同様です。
-
-　  
-
-#### *Python*
-実数を整数に変換する場合には `int` 関数を用います。
-```{python, comment=">>"}
-i = 1
-print(i, type(i), sep =", ")
-int(1.6)
+Pythonの整数型は小数点なしの数字で指定します。他の型を整数型に変換するには `int` 関数を用います。
+```{python, comment=">>", attr.source="title='Python'"}
+type(1)
+type(int(1.0))
 ```
-
-　  
-
-#### *R*
-Rでは整数型は `L` を付与して明示的に指定する必要があります。`L` がない場合は実数型として扱われます。
-```{r}
-I = 1L
-print(c(I, class(I)))
-as.integer(1.6)
+一方、Rの整数型は末尾に `L` をつけます。他の型を整数型に変換するには `as.integer` 関数を用います。
+```{r, attr.source="title='R'"}
+class(1L)
+class(as.integer(1.0))
 ```
 
 　  
 
 ### 実数型（浮動小数点数型）
-Pythonの実数型は `float` 型と呼ばれますが、ビット長 $64$ bitの倍精度浮動小数点数です。C言語の `float` 型（単精度浮動小数点数）とは異なります。整数を浮動小数点数に変換すえるには `float` 関数を用います。
-
-　  
-
-#### *Python*
-```{python, comment=">>"}
-r = 1.1
-print(r, type(r), sep =", ")
-float(1)
+Pythonの実数型は小数点ありの数字で指定します。なお、クラスは `float` ですが前述の通り倍精度浮動小数点数（64bit）です。他の型を実数型に変換するには `float` 関数を用います。
+```{python, comment=">>", attr.source="title='Python'"}
+type(1.0)
+type(1.)
+type(float(1))
 ```
-
-なお、少数点がない数値は整数型として扱われます。
-```{python, comment=">>"}
-r = 1
-print(r, type(r), sep =", ")
-```
-
-　  
-
-#### *R*
-Rでは小数点がなくても実数として扱われます。
-```{r}
-R = 1
-print(c(R, class(R)))
-as.double(1L)
+一方、Rの実数型は小数点の有無にかかわらず指定可能です。他の型を実数型に変換するには `as.numeric` 関数を用います。明示的に精度指定する場合には `as.double` または `as.single` 関数を用います。
+```{r, attr.source="title='R'"}
+class(1.0)
+class(1)
+class(as.numeric(1L))
 ```
 
 　  
 
 ### 複素数型
-複素数型については省略します。
-
-　  
-
-### 文字型（文字列型）
-Pythonの文字型はRの文字型と同様にクォート（`'` または `"`）で囲んで指定します。
-
-　  
-
-#### *Python*
-```{python, comment=">>"}
-s = "string"
-print(s, type(s), sep=", ")
+Pythonの複素数型の虚数は `j` を用います。複素数型に変換するには `complex` 関数を用います。
+```{python, comment=">>", attr.source="title='Python'"}
+type(1 + 1j)
+type(complex(1))
 ```
-
-Rと異なるのは複数行の文字列が指定できる点です。
-
-　  
-
-#### *Python*
-```{python, comment=">>"}
-s = """multi line string line1
-line2
-line3"""
-print(s, type(s), sep=", ")
+一方、Rの複素数型の虚数は `i` を用います。複素数型に変換するには `as.complex` 関数を用います。
+```{r, attr.source="title='R'"}
+class(1 + 1i)
+class(as.complex(1))
 ```
 
 　  
 
-#### *R*
-```{r}
-S = "sting"
-print(c(S, class(S)))
+### 文字型
+PythonもRも文字型の指定はクォート（シングルまたはダブル）で囲みます。数値などを文字型に変換するには `str` 関数を用います。Rと異なるのは 三連クォート（`"""`）を用いることで複数行の文字を指定できる点です。
+```{python, comment=">>", attr.source="title='Python'"}
+type("string")
+type(str(1))
+s = """string1
+string2
+string3
+"""
+print(s, type(s))
+```
+一方、Rでは数値などを文字型に変換するには `as.charactor` 関数を用います。
+```{r, attr.source="title='R'"}
+class("string")
+class(as.character(1))
 ```
 
 　  
 
-### バイト型
-バイト型については省略します。
+## 変数型（Container Types）
+データを格納する箱（変数）にはR同様に様々な型があります。変数型はスカラー型とベクトル型に大別できます。スカラー型は任意のデータが一つだけ入る変数型、ベクトル型は任意のデータが複数入る変数型で、Rは基本的にすべての変数型はベクトル変数なのが大きな特徴と言えます。
+
+Type     | Python      | R           | Memo
+---------|-------------|-------------|-----------------------------------------
+スカラー型 | `bool`, `int`, `float`, `complex`, `str`, `bytes` | N/A | 
+ベクトル型 | `list`, `tuple`, `dict`, `set` | `c` | Rの変数は基本的にベクトル型
+行列型     | N/A       | `matrix`    | 特殊なベクトル型
+配列型     | N/A       | `array`     | 特殊なベクトル型
+因子型     | N/A       | `factor`, `order` | インデックス付きのベクトル型
+データフレーム型 | N/A | `data.frame` | 複数の等長ベクトル型の集合
+リスト型   | N/A       | `list`       | 複数の不等長ベクトル型の集合
+
+Pythonで行列・配列・データフレームを扱うには別途、パッケージの読み込みが必要になります。
 
 　  
 
-## ベクトル型変数
-ベクトル型変数は、任意の値を複数格納できる変数です。
+### スカラー型変数
+Pythonのスカラー型変数は変数型と同義と考えてください。詳細はデータ型を参照してください。ちなみにRではスカラー型変数はありませんので長さ $1$ のベクトル型変数で代用します。
+
+　  
+
+### ベクトル型変数
+ベクトル型変数は、任意の値を複数格納できる変数です。Pythonでは四つのベクトル型変数があります。
 
 Type     | Func.   | Operator | Memo 
 ---------|---------|------|----------------------------------------------------
@@ -279,129 +215,119 @@ Type     | Func.   | Operator | Memo
 　  
 
 ### リスト型（list）
-Pythonのリスト型変数は最も基本となるベクトル型の変数です。`list`関数、または、`[]`オペレーターを使って作成します。
-
-　  
-
-#### *Python*
-```{python, comment=">>"}
+Pythonのリスト型変数は最も基本となるベクトル型の変数です。`list`関数、または、`[]`オペレーターを用います。
+```{python, comment=">>", attr.source="title='Python'"}
 x = [1, 2, 3]
 print(x, type(x), sep=", ")
 x = list([5, 6, 7, 8])
 print(x, type(x), sep=", ")
 ```
-
-Rと最も異なる点は異なるデータ型を混在できる点です。
-
-　  
-
-#### *Python*
-```{python, comment=">>"}
-x = [1, 2, "a", 4, 5 + 2j]
+Rと異なる点は異なるデータ型を混在できる点です。
+```{python, comment=">>", attr.source="title='Python'"}
+x = [1, 2, "a", 4.5, 5+2j, True]
 print(x, type(x))
 ```
-
-　  
-
-#### *R*
-```{r}
-X = c(1L, 2L, 3L)
-print(c(X, class(X)))
+リスト型を後述のタプル型に変換することも可能です。
+```{python, comment=">>", attr.source="title='Python'"}
+tuple(x)
 ```
 
-Rの場合、異なるデータを混在した場合、強制型変換が行われ最上位のデータ型に統一されます。
-
 　  
-
-#### *R*
-```{r}
-X = c(1L, 2, 3 + 5i)
-print(c(X, class(X)))
+Pythonのリスト型と最も似ているのはRではベクトル型です。
+```{r, attr.source="title='R'"}
+x <- c(1L, 2L, 3L)
+print(c(x, class(x)))
+```
+ただし、異なるデータ型が混在した場合、Rでは強制型変換が行われ最上位のデータ型に統一されます。
+```{r, attr.source="title='R'"}
+x <- c(1L, 2, 3+5i, "a", TRUE)
+print(c(x, class(x)))
 ```
 
 　  
 
 ### タプル型（tuple）
 Pythonのタプル型（`tuple`）はリスト型変数と同様のベクトル型の変数です。`tuple`関数、または、`()`
-オペレータを使って作成します。リスト型との違いはデータの変更ができない点です。
-
-#### *Python*
-```{python, comment=">>"}
+オペレータを用います。リスト型との違いはデータ要素の変更ができない点です。データ要素の変更については後述します。
+```{python, comment=">>", attr.source="title='Python'"}
 x = (1, 2, 3)
 print(x, type(x), sep=", ")
 x = tuple((5, 6, 7, 8))
 print(x, type(x), sep=", ")
 ```
+タプル型をリスト型に変換することも可能です。
+```{python, comment=">>", attr.source="title='Python'"}
+list(x)
+```
 
 　  
 
 ### 辞書型（dict）
-Pythonの辞書型（`dict`）は、キーと値の組み合わせでデータを管理できるベクトル型変数です。`dict`関数または`{}`オペレータを使って作成します。指定の際は必ず`key:value`の組み合わせで指定します。Rの因子型（factor）に似ていますが、キーはユニークでなければなりません。
-
-　  
-
-#### *Python*
-```{python, comment=">>"}
+Pythonの辞書型（`dict`）は、キーと値の組み合わせでデータを管理するためのベクトル型変数です。`dict`関数または`{}`オペレータを用いて、`key:value`の組み合わせでキーと値を指定します。Rの因子型（factor）に似ていますがキーはユニークでなければならない点が異なります。また、値はリスト型やタプル型と同様異なるデータ型を混在させることが可能です。
+```{python, comment=">>", attr.source="title='Python'"}
 x = {"key1":1, "key2":2, "key3":3}
 print(x, type(x), sep=", ")
 x = dict({"key1":1, "key2":2, "key3":3, "key4":"key"})
 print(x, type(x), sep=", ")
 ```
-
-　  
-
-#### *R*
-Rの因子型はデータからユニークキーを作成します。
-```{r}
-X = factor(c(1, 2, 3, 1, 5))
-X
+Rの因子型はデータからユニークキーを作成しますので、似ていますが非なるものと言えます。
+```{r, attr.source="title='R'"}
+x <- factor(c(1, 2, 3, 1, 5))
+x
 ```
 
 　  
 
 ### 集合型（set）
-Pythonの集合型（`set`）は、`set`関数または`{}`を使って作成します。重複するデータを指定してもRの因子型変数の`Levels`に相当するユニークなデータを変数に格納します。文字列を指定した場合は一文字つづに分解して格納します。
-
-　  
-
-#### *Python*
-```{python, comment=">>"}
+Pythonの集合型（`set`）は、`set`関数または`{}`を使って作成します。重複するデータを指定してもユニークなデータを変数として変数に格納します。文字列を指定した場合は一文字つづに分解して格納します。
+```{python, comment=">>", attr.source="title='Python'"}
 x = {4, 2, 3, 1, 1, 5, 2, 1, 1}
 print(x, type(x), sep=", ")
 x = set("strings")
 print(x, type(x), sep=", ")
+```
+Rの `levels` 関数や `uniqe` 関数での処理結果に近いと言えます。
+```{r, attr.source="title='R'"}
+x <- factor(c(4, 2, 3, 1, 1, 5, 2, 1, 1))
+levels(x)
+unique(c(4, 2, 3, 1, 1, 5, 2, 1, 1))
 ```
 
 　  
 
 # 演算子
 
+　  
+
 ## 単項演算子
-単項演算子は文字通り一つの変数に作用する演算子です。Pythonの単項演算子はRと同様にマイナスならびに否定の演算子があります。
+単項演算子は文字通り一つの変数に作用する演算子です。Pythonの単項演算子はRと同様にマイナスならびに否定演算子があります。
 
 Type | Python      | R           | Memo
 -----|-------------|-------------|-----------------------------------------
 マイナス | `-`     | `-`         | 
 否定     | `not()` | `!`         | 
 
-　  
 
-#### *Python*
-```{python, comment=">>"}
+```{python, comment=">>", attr.source="title='Python'"}
 x = 3
 print(-x, type(-x), sep=", ")
 not(True)
 ```
-
-　  
-
-#### *R*
-
-```{r}
+Rも同様の動きになります。
+```{r, attr.source="title='R'"}
 x <- 3L
 print(c(-x, class(-x)))
 !TRUE
 ```
+
+　  
+
+## 代入演算子
+既にコードに記述していますが、Pythonの代入演算子は `=` です。
+
+Type | Python      | R           | Memo
+-----|-------------|-------------|-----------------------------------------
+代入 | `=`         | `<-`        | Rでは `=` も利用できるが基本的に使わないこと
 
 　  
 
@@ -418,10 +344,7 @@ Type | Python      | R           | Memo
 剰余 | `%`         | `%%`        | 
 切捨 | `//`        | `%/%`       | 整数商
 
-　  
-
-#### *Python*
-```{python, comment=">>"}
+```{python, comment=">>", attr.source="title='Python'"}
 1 + 2
 2 - 3
 3 * 4
@@ -430,19 +353,7 @@ Type | Python      | R           | Memo
 7 % 8
 10 // 3
 ```
-
-　  
-
-#### *R*
-```{r}
-1 + 2
-2 - 3
-3 * 4
-5 / 6
-6 ^ 7
-7 %% 8
-10 %/% 3
-```
+Rの算術演算子につていは省略します。
 
 　  
 
@@ -454,7 +365,7 @@ Type | Python      | R           | Memo
 Python | `>`  | `<`  | `>=` | `<=` | `==` | `!=` | 
 R      | `>`  | `<`  | `>=` | `<=` | `==` | `!=` |  
 
-```{python, comment=">>"}
+```{python, comment=">>", attr.source="title='Python'"}
 1 > 2
 2 < 3
 3 >= 4
@@ -462,53 +373,42 @@ R      | `>`  | `<`  | `>=` | `<=` | `==` | `!=` |
 5 == 6
 6 != 7
 ```
+Rの比較演算子につていは省略します。
 
 　  
 
 ## 論理演算子
+論理演算子はブール代数の演算子です。単項演算子の `not` も論理演算子になります。
 
 言語   | AND | OR | XOR | NOT | Memo
 -------|------|------|------|------|-------------------------------------------
 Python | `and` | `or`  | N/A | `not` | 
 R      | `&&`  | `||`  | `xor` | `!` | 
 
-　  
-
-#### *Python*
-```{python, comment=">>"}
+```{python, comment=">>", attr.source="title='Python'"}
 1 and 0
 1 or 0
 not 0
 ```
-
-　  
-
-#### *R*
-```{r}
-1 && 0
-1 || 0
-xor(1, 0)
-!TRUE
-```
+Rの論理演算子については省略します。
 
 　  
 
 ## 参照演算子（アクセス演算子）
-Pythonでベクトル変数の中身（要素）を参照する場合は参照演算子（`[]`）を用います。Rと異なりインデックスは $0$ から始まります。
+Pythonでベクトル変数の要素を参照する際に利用するのが参照演算子（`[]`）です。Rと異なりインデックスは $0$ から始まります。
 
-演算子  | 説明
---------|----------------------------------------------------------------------
-[n]     | $n$番目の要素を参照します
-[n:m]   | $n$番目から$m-1$番目の要素を参照します
-[n:]    | $n$番目以降の要素を参照します
-[:m]    | $m-1$番目までの要素を参照します
-[n:m:s] | $n$番目から$m-1$番目の要素を$s$ごとに参照します
+演算子    | 説明
+----------|--------------------------------------------------------------------
+`[n]`     | $n$番目の要素を参照します
+`[n:m]`   | $n$番目から$m-1$番目の要素を参照します
+`[n:]`    | $n$番目以降の要素を参照します
+`[:m]`    | $m-1$番目までの要素を参照します
+`[n:m:s]` | $n$番目から$m-1$番目の要素を$s$ごとに参照します
 
 　  
 
-#### *Python*
-```{python, comment=">>"}
-x = list([1, 2, 3, 4, 5, 6, 7, 8, 9, 0])
+```{python, comment=">>", attr.source="title='Python'"}
+x = list([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
 x
 x[0]
 x[0:3]
@@ -518,12 +418,65 @@ x[0:10:2]
 ```
 
 　  
-
-#### *R*
-Rでも同様の参照が可能です。
-```{r}
-X <- c(1:9, 0)
-X
-X[1]
-X[1:3]
+Rでも同様の参照が可能ですがインデックスは $1$ から始まります。なお、Pythonのような凝った参照はできません。
+```{r, attr.source="title='R'"}
+x <- c(1:9, 10)
+x
+x[1]
+x[1:3]
 ```
+
+　  
+
+### マイナス参照
+参照演算子のインデックスにRと同様にマイナス値を指定することが可能でが、参照結果はまったく異なりますので注意が必要です。Pythonで参照演算子にマイナス値を指定した場合は要素の後ろからの参照になります。
+```{python, comment=">>", attr.source="title='Python'"}
+x
+x[-1]
+x[-10]
+```
+Rで参照演算子にマイナス値を指定した場合は該当箇所の要素を削除します。
+```{r, attr.source="title='R'"}
+x
+x[-1]
+```
+
+　  
+
+### 要素の変更
+Pythonでは参照演算子を用いて任意の要素を変更することができます。
+```{python, comment=">>", attr.source="title='Python'"}
+x = list([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
+print(x)
+x[-1] = 0
+print(x)
+```
+なお、前述のようにタプル型では要素の変更はできません。
+```{python, comment=">>", attr.source="title='Python'", error=TRUE}
+x = tuple((1, 2, 3, 4, 5, 6, 7, 8, 9, 10))
+print(x)
+x[-1] = 0
+print(x)
+```
+
+　  
+
+# ベクトル演算
+Rではベクトル演算が可能ですが、Pythonでベクトル演算はできません。Pythonの `+` 演算子はベクトル型変数を結合するだけです。
+```{python, comment=">>", attr.source="title='Python'", error=TRUE}
+-list([1, 2, 3])
+list([1, 2, 3]) + list([4, 5, 6])
+list([1, 2, 3]) - list([4, 5, 6])
+```
+一方、Rはベクトル演算が可能です。
+```{r, attr.source="title='R'"}
+-c(1, 2, 3)
+c(1, 2, 3) + c(4, 5, 6)
+c(1, 2, 3) - c(4, 5, 6)
+```
+
+　  
+
+---
+
+CC 4.0 BY-NC-SA, Sampo Suzuki

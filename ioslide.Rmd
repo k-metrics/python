@@ -1,0 +1,111 @@
+---
+title: "Untitled"
+author: "Sampo Suzuki"
+date: "2019/12/27"
+output: 
+  ioslides_presentation:
+    code_folding: none
+    df_print: paged
+    highlight: pygments
+    md_extensions: -ascii_identifiers
+    self_contained: yes
+knit: (function(inputFile, encoding) { 
+       rmarkdown::render(inputFile,
+                         encoding=encoding, 
+                         output_dir = "docs/") })
+---
+
+```{css, echo=FALSE}
+h1 {border-bottom: solid 2.5px;}
+h2 {border-bottom: solid 2.0px;}
+h3 {border-bottom: solid 1.5px;}
+h4 {border-bottom: solid 1.0px; font-size: smaller;}
+
+/*見出しの最初の文字のみ大きくする*/
+/*h1:first-letter {font-size: 1.25em;}*/
+
+/*** for HTML format ONLY ***/
+
+  /*コードブロック・タグ*/
+div.sourceCode[title]:before {
+   content: attr(title);
+   color: white;
+   /* font-size: smaller; font-style: oblique; font-weight: bold; */
+   font-size: smaller; font-weight: normal;
+   background: #336600;
+   padding: 0.1em 0.75em 0.3em 0.75em;
+   border-color: #CCCCCC;
+   border-style: solid solid solid solid; border-width: 1px 1px 1px 1px
+}
+
+pre.r {
+  position: relative;
+  padding-top: 2rem;
+}
+pre.r:before {
+  content: 'R';
+  color: white;
+  font-family: sans-serif; font-size: smaller; font-style: italic;
+  font-weight: bold; 
+  background: #3366CC;
+  padding: 0em 0.5em;
+  position: absolute;
+  top: 0;
+}
+
+pre.python {
+  position: relative;
+  padding-top: 2rem;
+}
+pre.python:before {
+  content: 'Python';
+  color: #336699;
+  font-family: sans-serif; font-size: smaller; font-style: italic;
+  font-weight: bold; 
+  background: #FFFF66;
+  padding: 0 0.5rem;
+  position: absolute;
+  top: 0;
+}
+
+/*** for ioslide format ONLY ***/
+pre.lang-python {
+  position: relative;
+  padding-top: 2rem;
+}
+pre.lang-python:before {
+  content: 'Python';
+  color: #336699;
+  font-family: sans-serif; font-size: smaller; font-style: italic;
+  font-weight: bold; 
+  background: #FFFF66;
+  padding: 0 0.5rem;
+  position: absolute;
+  top: 0;
+}
+
+```
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, 
+                      engine.path = list('/opt/virtualenvs/r-tensorflow'))
+```
+
+## 変数
+Pythonの変数はRと同様にC言語のような変数宣言をする必要はありません。利用したい変数に直接、値（データ）を代入することで任意の変数が作成できます。例えば整数値をもつ変数は以下のように作成します。
+
+```{python, comment=">>", attr.source="title='整数型変数の作成と結果の確認'"}
+x = 10
+print(x, type(x), sep=", ")
+```
+
+## R
+
+```{r, attr.source="title='整数型変数の作成と結果の確認'"}
+r <- 10L
+print(c(r, class(r)))
+```
+```{python, comment=">>", attr.source="title='整数型変数の作成と結果の確認'"}
+x = 10
+print(x, type(x), sep=", ")
+```

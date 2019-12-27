@@ -1,0 +1,70 @@
+/*** Header underline ********************************************************/
+h1 {border-bottom: solid 2.5px;}
+h2 {border-bottom: solid 2.0px;}
+h3 {border-bottom: solid 1.5px;}
+h4 {border-bottom: solid 1.0px; font-size: smaller;}
+
+/* 見出しの最初の文字のみ大きくする場合 */
+/*h1:first-letter {font-size: 1.25em;}*/
+
+/*** for HTML format ONLY ****************************************************/
+/*** Outer TAB for Code Block, must set `highlight` in YAML                ***/
+/*** And add `attr.source="title='hogehoge'"` in chink option              ***/
+div.sourceCode[title]:before {
+   content: attr(title);
+   color: white;
+   /* font-size: smaller; font-style: oblique; font-weight: bold; */
+   font-size: smaller; font-weight: normal;
+   background: #336600;
+   padding: 0.1em 0.75em 0.3em 0.75em;
+   border-color: #CCCCCC;
+   border-style: solid solid solid solid; border-width: 1px 1px 1px 1px
+}
+
+/*** Inner TAB for Code Block ***/
+pre.r {
+  position: relative;
+  padding-top: 2rem;
+}
+pre.r:before {
+  content: 'R';
+  color: white;
+  font-family: sans-serif; font-size: smaller; font-style: italic;
+  font-weight: bold; 
+  background: #3366CC;
+  padding: 0em 0.5em;
+  position: absolute;
+  top: 0;
+}
+
+pre.python {
+  position: relative;
+  padding-top: 2rem;
+}
+pre.python:before {
+  content: 'Python';
+  color: #336699;
+  font-family: sans-serif; font-size: smaller; font-style: italic;
+  font-weight: bold; 
+  background: #FFFF66;
+  padding: 0 0.5rem;
+  position: absolute;
+  top: 0;
+}
+
+/*** for ioslide format ONLY *************************************************/
+/*** Inner TAB for Code Block ***/
+pre.lang-python {
+  position: relative;
+  padding-top: 2rem;
+}
+pre.lang-python:before {
+  content: 'Python';
+  color: #336699;
+  font-family: sans-serif; font-size: smaller; font-style: italic;
+  font-weight: bold; 
+  background: #FFFF66;
+  padding: 0 0.5rem;
+  position: absolute;
+  top: 0;
+}

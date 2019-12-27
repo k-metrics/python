@@ -52,7 +52,7 @@ print(c(r, class(r)))
 
 また、Rと同様に作成した変数に上書きして別のデータを代入することが可能です。先程作成した整数型の変数 `x` に実数（浮動小数点数）を代入してみます。
 
-```{python, comment=">>", attr.source="title='整数型変数への実数の上書き'"}
+```{python, comment=">>", attr.source="title='整数型変数に実数を代入'"}
 print(x, type(x), sep=", ")
 x = 10.1
 print(x, type(x), sep=", ")

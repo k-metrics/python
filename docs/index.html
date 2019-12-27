@@ -2560,7 +2560,7 @@ a.sourceLine { text-indent: -1em; padding-left: 1em; }
 pre.numberSource a.sourceLine
   { position: relative; left: -4em; }
 pre.numberSource a.sourceLine::before
-  { content: attr(title);
+  { content: attr(data-line-number);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
     border: none; pointer-events: all; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
@@ -2673,13 +2673,14 @@ h4 {border-bottom: solid 1.0px; font-size: smaller;}
 
 div.sourceCode[title]:before {
 content: attr(title);
-color: white;
+color: #333333;
 
 font-size: smaller; font-weight: normal;
-background: #336600;
+background: #ccccff;
 padding: 0.1em 0.75em 0.3em 0.75em;
 border-color: #CCCCCC;
-border-style: solid solid solid solid; border-width: 1px 1px 1px 1px
+border-style: solid solid solid solid;
+border-width: 1px 1px 0.1rem 1px;
 }
 
 pre.r {
@@ -2690,8 +2691,8 @@ pre.r:before {
 content: 'R';
 color: white;
 font-family: sans-serif; font-size: smaller; font-style: italic;
-font-weight: bold; background: #3366CC;
-padding: 0em 0.5em;
+font-weight: bold; background: #0066CC;
+padding: 0em 0.5rem;
 position: absolute;
 top: 0;
 }
@@ -2918,23 +2919,23 @@ div.tocify {
 <div id="変数" class="section level1">
 <h1>変数</h1>
 <p>Pythonの変数はRと同様にC言語のような変数宣言をする必要はありません。利用したい変数に直接、値（データ）を代入することで任意の変数が作成できます。例えば整数値をもつ変数は以下のように作成します。</p>
-<div class="sourceCode" id="cb1" title="整数型変数の作成と結果の確認"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb1-1" title="1">x <span class="op">=</span> <span class="dv">10</span></a>
-<a class="sourceLine" id="cb1-2" title="2"><span class="bu">print</span>(x, <span class="bu">type</span>(x), sep<span class="op">=</span><span class="st">&quot;, &quot;</span>)</a></code></pre></div>
-<pre><code>&gt;&gt; 10, &lt;class &#39;int&#39;&gt;</code></pre>
-<div class="sourceCode" id="cb3" title="整数型変数の作成と結果の確認"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" title="1">r &lt;-<span class="st"> </span>10L</a>
-<a class="sourceLine" id="cb3-2" title="2"><span class="kw">print</span>(<span class="kw">c</span>(r, <span class="kw">class</span>(r)))</a></code></pre></div>
+<div class="sourceCode" id="cb1" title="整数型変数の作成と結果の確認"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb1-1" data-line-number="1">x <span class="op">=</span> <span class="dv">10</span></a>
+<a class="sourceLine" id="cb1-2" data-line-number="2"><span class="bu">print</span>(x, <span class="bu">type</span>(x), sep<span class="op">=</span><span class="st">&quot;, &quot;</span>)</a></code></pre></div>
+<pre><code>&gt;&gt; 10, &lt;class 'int'&gt;</code></pre>
+<div class="sourceCode" id="cb3" title="整数型変数の作成と結果の確認"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1">r &lt;-<span class="st"> </span>10L</a>
+<a class="sourceLine" id="cb3-2" data-line-number="2"><span class="kw">print</span>(<span class="kw">c</span>(r, <span class="kw">class</span>(r)))</a></code></pre></div>
 <pre><code>## [1] &quot;10&quot;      &quot;integer&quot;</code></pre>
 <p>　</p>
 <p>また、Rと同様に作成した変数に上書きして別のデータを代入することが可能です。先程作成した整数型の変数 <code>x</code> に実数（浮動小数点数）を代入してみます。</p>
-<div class="sourceCode" id="cb5" title="整数型変数への実数の上書き"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb5-1" title="1"><span class="bu">print</span>(x, <span class="bu">type</span>(x), sep<span class="op">=</span><span class="st">&quot;, &quot;</span>)</a></code></pre></div>
-<pre><code>&gt;&gt; 10, &lt;class &#39;int&#39;&gt;</code></pre>
-<div class="sourceCode" id="cb7" title="整数型変数への実数の上書き"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb7-1" title="1">x <span class="op">=</span> <span class="fl">10.1</span></a>
-<a class="sourceLine" id="cb7-2" title="2"><span class="bu">print</span>(x, <span class="bu">type</span>(x), sep<span class="op">=</span><span class="st">&quot;, &quot;</span>)</a></code></pre></div>
-<pre><code>&gt;&gt; 10.1, &lt;class &#39;float&#39;&gt;</code></pre>
-<div class="sourceCode" id="cb9" title="R"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" title="1"><span class="kw">print</span>(<span class="kw">c</span>(r, <span class="kw">class</span>(r)))</a></code></pre></div>
+<div class="sourceCode" id="cb5" title="整数型変数に実数を代入"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="bu">print</span>(x, <span class="bu">type</span>(x), sep<span class="op">=</span><span class="st">&quot;, &quot;</span>)</a></code></pre></div>
+<pre><code>&gt;&gt; 10, &lt;class 'int'&gt;</code></pre>
+<div class="sourceCode" id="cb7" title="整数型変数に実数を代入"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb7-1" data-line-number="1">x <span class="op">=</span> <span class="fl">10.1</span></a>
+<a class="sourceLine" id="cb7-2" data-line-number="2"><span class="bu">print</span>(x, <span class="bu">type</span>(x), sep<span class="op">=</span><span class="st">&quot;, &quot;</span>)</a></code></pre></div>
+<pre><code>&gt;&gt; 10.1, &lt;class 'float'&gt;</code></pre>
+<div class="sourceCode" id="cb9" title="R"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1"><span class="kw">print</span>(<span class="kw">c</span>(r, <span class="kw">class</span>(r)))</a></code></pre></div>
 <pre><code>## [1] &quot;10&quot;      &quot;integer&quot;</code></pre>
-<div class="sourceCode" id="cb11" title="R"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" title="1">r &lt;-<span class="st"> </span><span class="fl">10.1</span></a>
-<a class="sourceLine" id="cb11-2" title="2"><span class="kw">print</span>(<span class="kw">c</span>(r, <span class="kw">class</span>(r)))</a></code></pre></div>
+<div class="sourceCode" id="cb11" title="R"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" data-line-number="1">r &lt;-<span class="st"> </span><span class="fl">10.1</span></a>
+<a class="sourceLine" id="cb11-2" data-line-number="2"><span class="kw">print</span>(<span class="kw">c</span>(r, <span class="kw">class</span>(r)))</a></code></pre></div>
 <pre><code>## [1] &quot;10.1&quot;    &quot;numeric&quot;</code></pre>
 <p>このようにPython、R共に整数型の変数が実数型の変数に変わっていることが分かります。</p>
 <p>　</p>
@@ -2999,87 +3000,87 @@ div.tocify {
 <div id="論理型真偽型ブール型" class="section level3">
 <h3>論理型（真偽型・ブール型）</h3>
 <p>Pythonの論理型は <code>True</code> と <code>False</code> です。先頭の文字だけが大文字になりますので注意してください。Rや他の言語と同様に <code>1</code>, <code>0</code> と等価です。論理型に変換するには <code>bool</code> 関数を用います。</p>
-<div class="sourceCode" id="cb13" title="Python"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb13-1" title="1"><span class="bu">type</span>(<span class="va">True</span>)</a></code></pre></div>
-<pre><code>&gt;&gt; &lt;class &#39;bool&#39;&gt;</code></pre>
-<div class="sourceCode" id="cb15" title="Python"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb15-1" title="1"><span class="va">True</span> <span class="op">==</span> <span class="dv">1</span></a></code></pre></div>
+<div class="sourceCode" id="cb13" title="Python"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb13-1" data-line-number="1"><span class="bu">type</span>(<span class="va">True</span>)</a></code></pre></div>
+<pre><code>&gt;&gt; &lt;class 'bool'&gt;</code></pre>
+<div class="sourceCode" id="cb15" title="Python"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb15-1" data-line-number="1"><span class="va">True</span> <span class="op">==</span> <span class="dv">1</span></a></code></pre></div>
 <pre><code>&gt;&gt; True</code></pre>
-<div class="sourceCode" id="cb17" title="Python"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb17-1" title="1"><span class="bu">type</span>(<span class="bu">bool</span>(<span class="dv">0</span>))</a></code></pre></div>
-<pre><code>&gt;&gt; &lt;class &#39;bool&#39;&gt;</code></pre>
+<div class="sourceCode" id="cb17" title="Python"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb17-1" data-line-number="1"><span class="bu">type</span>(<span class="bu">bool</span>(<span class="dv">0</span>))</a></code></pre></div>
+<pre><code>&gt;&gt; &lt;class 'bool'&gt;</code></pre>
 <p>一方、Rの論理型はすべて大文字です。Python同様に <code>1</code>, <code>0</code> と等価で、論理型に変換するには <code>as.logical</code> 関数を用います。</p>
-<div class="sourceCode" id="cb19" title="R"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb19-1" title="1"><span class="kw">class</span>(<span class="ot">TRUE</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb19" title="R"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb19-1" data-line-number="1"><span class="kw">class</span>(<span class="ot">TRUE</span>)</a></code></pre></div>
 <pre><code>## [1] &quot;logical&quot;</code></pre>
-<div class="sourceCode" id="cb21" title="R"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb21-1" title="1"><span class="ot">TRUE</span> <span class="op">==</span><span class="st"> </span><span class="dv">1</span></a></code></pre></div>
+<div class="sourceCode" id="cb21" title="R"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb21-1" data-line-number="1"><span class="ot">TRUE</span> <span class="op">==</span><span class="st"> </span><span class="dv">1</span></a></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
-<div class="sourceCode" id="cb23" title="R"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb23-1" title="1"><span class="kw">class</span>(<span class="kw">as.logical</span>(<span class="dv">0</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb23" title="R"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb23-1" data-line-number="1"><span class="kw">class</span>(<span class="kw">as.logical</span>(<span class="dv">0</span>))</a></code></pre></div>
 <pre><code>## [1] &quot;logical&quot;</code></pre>
 <p>　</p>
 </div>
 <div id="整数型" class="section level3">
 <h3>整数型</h3>
 <p>Pythonの整数型は小数点なしの数字で指定します。他の型を整数型に変換するには <code>int</code> 関数を用います。</p>
-<div class="sourceCode" id="cb25" title="Python"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb25-1" title="1"><span class="bu">type</span>(<span class="dv">1</span>)</a></code></pre></div>
-<pre><code>&gt;&gt; &lt;class &#39;int&#39;&gt;</code></pre>
-<div class="sourceCode" id="cb27" title="Python"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb27-1" title="1"><span class="bu">type</span>(<span class="bu">int</span>(<span class="fl">1.0</span>))</a></code></pre></div>
-<pre><code>&gt;&gt; &lt;class &#39;int&#39;&gt;</code></pre>
+<div class="sourceCode" id="cb25" title="Python"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb25-1" data-line-number="1"><span class="bu">type</span>(<span class="dv">1</span>)</a></code></pre></div>
+<pre><code>&gt;&gt; &lt;class 'int'&gt;</code></pre>
+<div class="sourceCode" id="cb27" title="Python"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb27-1" data-line-number="1"><span class="bu">type</span>(<span class="bu">int</span>(<span class="fl">1.0</span>))</a></code></pre></div>
+<pre><code>&gt;&gt; &lt;class 'int'&gt;</code></pre>
 <p>一方、Rの整数型は末尾に <code>L</code> をつけます。他の型を整数型に変換するには <code>as.integer</code> 関数を用います。</p>
-<div class="sourceCode" id="cb29" title="R"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb29-1" title="1"><span class="kw">class</span>(1L)</a></code></pre></div>
+<div class="sourceCode" id="cb29" title="R"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb29-1" data-line-number="1"><span class="kw">class</span>(1L)</a></code></pre></div>
 <pre><code>## [1] &quot;integer&quot;</code></pre>
-<div class="sourceCode" id="cb31" title="R"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb31-1" title="1"><span class="kw">class</span>(<span class="kw">as.integer</span>(<span class="fl">1.0</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb31" title="R"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb31-1" data-line-number="1"><span class="kw">class</span>(<span class="kw">as.integer</span>(<span class="fl">1.0</span>))</a></code></pre></div>
 <pre><code>## [1] &quot;integer&quot;</code></pre>
 <p>　</p>
 </div>
 <div id="実数型浮動小数点数型" class="section level3">
 <h3>実数型（浮動小数点数型）</h3>
 <p>Pythonの実数型は小数点ありの数字で指定します。なお、クラスは <code>float</code> ですが前述の通り倍精度浮動小数点数（64bit）です。他の型を実数型に変換するには <code>float</code> 関数を用います。</p>
-<div class="sourceCode" id="cb33" title="Python"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb33-1" title="1"><span class="bu">type</span>(<span class="fl">1.0</span>)</a></code></pre></div>
-<pre><code>&gt;&gt; &lt;class &#39;float&#39;&gt;</code></pre>
-<div class="sourceCode" id="cb35" title="Python"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb35-1" title="1"><span class="bu">type</span>(<span class="fl">1.</span>)</a></code></pre></div>
-<pre><code>&gt;&gt; &lt;class &#39;float&#39;&gt;</code></pre>
-<div class="sourceCode" id="cb37" title="Python"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb37-1" title="1"><span class="bu">type</span>(<span class="bu">float</span>(<span class="dv">1</span>))</a></code></pre></div>
-<pre><code>&gt;&gt; &lt;class &#39;float&#39;&gt;</code></pre>
+<div class="sourceCode" id="cb33" title="Python"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb33-1" data-line-number="1"><span class="bu">type</span>(<span class="fl">1.0</span>)</a></code></pre></div>
+<pre><code>&gt;&gt; &lt;class 'float'&gt;</code></pre>
+<div class="sourceCode" id="cb35" title="Python"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb35-1" data-line-number="1"><span class="bu">type</span>(<span class="fl">1.</span>)</a></code></pre></div>
+<pre><code>&gt;&gt; &lt;class 'float'&gt;</code></pre>
+<div class="sourceCode" id="cb37" title="Python"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb37-1" data-line-number="1"><span class="bu">type</span>(<span class="bu">float</span>(<span class="dv">1</span>))</a></code></pre></div>
+<pre><code>&gt;&gt; &lt;class 'float'&gt;</code></pre>
 <p>一方、Rの実数型は小数点の有無にかかわらず指定可能です。他の型を実数型に変換するには <code>as.numeric</code> 関数を用います。明示的に精度指定する場合には <code>as.double</code> または <code>as.single</code> 関数を用います。</p>
-<div class="sourceCode" id="cb39" title="R"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb39-1" title="1"><span class="kw">class</span>(<span class="fl">1.0</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb39" title="R"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb39-1" data-line-number="1"><span class="kw">class</span>(<span class="fl">1.0</span>)</a></code></pre></div>
 <pre><code>## [1] &quot;numeric&quot;</code></pre>
-<div class="sourceCode" id="cb41" title="R"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb41-1" title="1"><span class="kw">class</span>(<span class="dv">1</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb41" title="R"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb41-1" data-line-number="1"><span class="kw">class</span>(<span class="dv">1</span>)</a></code></pre></div>
 <pre><code>## [1] &quot;numeric&quot;</code></pre>
-<div class="sourceCode" id="cb43" title="R"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb43-1" title="1"><span class="kw">class</span>(<span class="kw">as.numeric</span>(1L))</a></code></pre></div>
+<div class="sourceCode" id="cb43" title="R"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb43-1" data-line-number="1"><span class="kw">class</span>(<span class="kw">as.numeric</span>(1L))</a></code></pre></div>
 <pre><code>## [1] &quot;numeric&quot;</code></pre>
 <p>　</p>
 </div>
 <div id="複素数型" class="section level3">
 <h3>複素数型</h3>
 <p>Pythonの複素数型の虚数は <code>j</code> を用います。複素数型に変換するには <code>complex</code> 関数を用います。</p>
-<div class="sourceCode" id="cb45" title="Python"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb45-1" title="1"><span class="bu">type</span>(<span class="dv">1</span> <span class="op">+</span> 1j)</a></code></pre></div>
-<pre><code>&gt;&gt; &lt;class &#39;complex&#39;&gt;</code></pre>
-<div class="sourceCode" id="cb47" title="Python"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb47-1" title="1"><span class="bu">type</span>(<span class="bu">complex</span>(<span class="dv">1</span>))</a></code></pre></div>
-<pre><code>&gt;&gt; &lt;class &#39;complex&#39;&gt;</code></pre>
+<div class="sourceCode" id="cb45" title="Python"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb45-1" data-line-number="1"><span class="bu">type</span>(<span class="dv">1</span> <span class="op">+</span> 1j)</a></code></pre></div>
+<pre><code>&gt;&gt; &lt;class 'complex'&gt;</code></pre>
+<div class="sourceCode" id="cb47" title="Python"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb47-1" data-line-number="1"><span class="bu">type</span>(<span class="bu">complex</span>(<span class="dv">1</span>))</a></code></pre></div>
+<pre><code>&gt;&gt; &lt;class 'complex'&gt;</code></pre>
 <p>一方、Rの複素数型の虚数は <code>i</code> を用います。複素数型に変換するには <code>as.complex</code> 関数を用います。</p>
-<div class="sourceCode" id="cb49" title="R"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb49-1" title="1"><span class="kw">class</span>(<span class="dv">1</span> <span class="op">+</span><span class="st"> </span>1i)</a></code></pre></div>
+<div class="sourceCode" id="cb49" title="R"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb49-1" data-line-number="1"><span class="kw">class</span>(<span class="dv">1</span> <span class="op">+</span><span class="st"> </span>1i)</a></code></pre></div>
 <pre><code>## [1] &quot;complex&quot;</code></pre>
-<div class="sourceCode" id="cb51" title="R"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb51-1" title="1"><span class="kw">class</span>(<span class="kw">as.complex</span>(<span class="dv">1</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb51" title="R"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb51-1" data-line-number="1"><span class="kw">class</span>(<span class="kw">as.complex</span>(<span class="dv">1</span>))</a></code></pre></div>
 <pre><code>## [1] &quot;complex&quot;</code></pre>
 <p>　</p>
 </div>
 <div id="文字型" class="section level3">
 <h3>文字型</h3>
 <p>PythonもRも文字型の指定はクォート（シングルまたはダブル）で囲みます。数値などを文字型に変換するには <code>str</code> 関数を用います。Rと異なるのは 三連クォート（<code>&quot;&quot;&quot;</code>）を用いることで複数行の文字を指定できる点です。</p>
-<div class="sourceCode" id="cb53" title="Python"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb53-1" title="1"><span class="bu">type</span>(<span class="st">&quot;string&quot;</span>)</a></code></pre></div>
-<pre><code>&gt;&gt; &lt;class &#39;str&#39;&gt;</code></pre>
-<div class="sourceCode" id="cb55" title="Python"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb55-1" title="1"><span class="bu">type</span>(<span class="bu">str</span>(<span class="dv">1</span>))</a></code></pre></div>
-<pre><code>&gt;&gt; &lt;class &#39;str&#39;&gt;</code></pre>
-<div class="sourceCode" id="cb57" title="Python"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb57-1" title="1">s <span class="op">=</span> <span class="st">&quot;&quot;&quot;string1</span></a>
-<a class="sourceLine" id="cb57-2" title="2"><span class="st">string2</span></a>
-<a class="sourceLine" id="cb57-3" title="3"><span class="st">string3</span></a>
-<a class="sourceLine" id="cb57-4" title="4"><span class="st">&quot;&quot;&quot;</span></a>
-<a class="sourceLine" id="cb57-5" title="5"><span class="bu">print</span>(s, <span class="bu">type</span>(s))</a></code></pre></div>
+<div class="sourceCode" id="cb53" title="Python"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb53-1" data-line-number="1"><span class="bu">type</span>(<span class="st">&quot;string&quot;</span>)</a></code></pre></div>
+<pre><code>&gt;&gt; &lt;class 'str'&gt;</code></pre>
+<div class="sourceCode" id="cb55" title="Python"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb55-1" data-line-number="1"><span class="bu">type</span>(<span class="bu">str</span>(<span class="dv">1</span>))</a></code></pre></div>
+<pre><code>&gt;&gt; &lt;class 'str'&gt;</code></pre>
+<div class="sourceCode" id="cb57" title="Python"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb57-1" data-line-number="1">s <span class="op">=</span> <span class="st">&quot;&quot;&quot;string1</span></a>
+<a class="sourceLine" id="cb57-2" data-line-number="2"><span class="st">string2</span></a>
+<a class="sourceLine" id="cb57-3" data-line-number="3"><span class="st">string3</span></a>
+<a class="sourceLine" id="cb57-4" data-line-number="4"><span class="st">&quot;&quot;&quot;</span></a>
+<a class="sourceLine" id="cb57-5" data-line-number="5"><span class="bu">print</span>(s, <span class="bu">type</span>(s))</a></code></pre></div>
 <pre><code>&gt;&gt; string1
 &gt;&gt; string2
 &gt;&gt; string3
-&gt;&gt;  &lt;class &#39;str&#39;&gt;</code></pre>
+&gt;&gt;  &lt;class 'str'&gt;</code></pre>
 <p>一方、Rでは数値などを文字型に変換するには <code>as.charactor</code> 関数を用います。</p>
-<div class="sourceCode" id="cb59" title="R"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb59-1" title="1"><span class="kw">class</span>(<span class="st">&quot;string&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb59" title="R"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb59-1" data-line-number="1"><span class="kw">class</span>(<span class="st">&quot;string&quot;</span>)</a></code></pre></div>
 <pre><code>## [1] &quot;character&quot;</code></pre>
-<div class="sourceCode" id="cb61" title="R"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb61-1" title="1"><span class="kw">class</span>(<span class="kw">as.character</span>(<span class="dv">1</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb61" title="R"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb61-1" data-line-number="1"><span class="kw">class</span>(<span class="kw">as.character</span>(<span class="dv">1</span>))</a></code></pre></div>
 <pre><code>## [1] &quot;character&quot;</code></pre>
 <p>　</p>
 </div>
@@ -3192,56 +3193,56 @@ div.tocify {
 <div id="リスト型list" class="section level3">
 <h3>リスト型（list）</h3>
 <p>Pythonのリスト型変数は最も基本となるベクトル型の変数です。<code>list</code>関数、または、<code>[]</code>オペレーターを用います。</p>
-<div class="sourceCode" id="cb63" title="Python"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb63-1" title="1">x <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>]</a>
-<a class="sourceLine" id="cb63-2" title="2"><span class="bu">print</span>(x, <span class="bu">type</span>(x), sep<span class="op">=</span><span class="st">&quot;, &quot;</span>)</a></code></pre></div>
-<pre><code>&gt;&gt; [1, 2, 3], &lt;class &#39;list&#39;&gt;</code></pre>
-<div class="sourceCode" id="cb65" title="Python"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb65-1" title="1">x <span class="op">=</span> <span class="bu">list</span>([<span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">8</span>])</a>
-<a class="sourceLine" id="cb65-2" title="2"><span class="bu">print</span>(x, <span class="bu">type</span>(x), sep<span class="op">=</span><span class="st">&quot;, &quot;</span>)</a></code></pre></div>
-<pre><code>&gt;&gt; [5, 6, 7, 8], &lt;class &#39;list&#39;&gt;</code></pre>
+<div class="sourceCode" id="cb63" title="Python"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb63-1" data-line-number="1">x <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>]</a>
+<a class="sourceLine" id="cb63-2" data-line-number="2"><span class="bu">print</span>(x, <span class="bu">type</span>(x), sep<span class="op">=</span><span class="st">&quot;, &quot;</span>)</a></code></pre></div>
+<pre><code>&gt;&gt; [1, 2, 3], &lt;class 'list'&gt;</code></pre>
+<div class="sourceCode" id="cb65" title="Python"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb65-1" data-line-number="1">x <span class="op">=</span> <span class="bu">list</span>([<span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">8</span>])</a>
+<a class="sourceLine" id="cb65-2" data-line-number="2"><span class="bu">print</span>(x, <span class="bu">type</span>(x), sep<span class="op">=</span><span class="st">&quot;, &quot;</span>)</a></code></pre></div>
+<pre><code>&gt;&gt; [5, 6, 7, 8], &lt;class 'list'&gt;</code></pre>
 <p>Rと異なる点は異なるデータ型を混在できる点です。</p>
-<div class="sourceCode" id="cb67" title="Python"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb67-1" title="1">x <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="st">&quot;a&quot;</span>, <span class="fl">4.5</span>, <span class="dv">5</span><span class="op">+</span>2j, <span class="va">True</span>]</a>
-<a class="sourceLine" id="cb67-2" title="2"><span class="bu">print</span>(x, <span class="bu">type</span>(x))</a></code></pre></div>
-<pre><code>&gt;&gt; [1, 2, &#39;a&#39;, 4.5, (5+2j), True] &lt;class &#39;list&#39;&gt;</code></pre>
+<div class="sourceCode" id="cb67" title="Python"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb67-1" data-line-number="1">x <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="st">&quot;a&quot;</span>, <span class="fl">4.5</span>, <span class="dv">5</span><span class="op">+</span>2j, <span class="va">True</span>]</a>
+<a class="sourceLine" id="cb67-2" data-line-number="2"><span class="bu">print</span>(x, <span class="bu">type</span>(x))</a></code></pre></div>
+<pre><code>&gt;&gt; [1, 2, 'a', 4.5, (5+2j), True] &lt;class 'list'&gt;</code></pre>
 <p>リスト型を後述のタプル型に変換することも可能です。</p>
-<div class="sourceCode" id="cb69" title="Python"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb69-1" title="1"><span class="bu">tuple</span>(x)</a></code></pre></div>
-<pre><code>&gt;&gt; (1, 2, &#39;a&#39;, 4.5, (5+2j), True)</code></pre>
+<div class="sourceCode" id="cb69" title="Python"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb69-1" data-line-number="1"><span class="bu">tuple</span>(x)</a></code></pre></div>
+<pre><code>&gt;&gt; (1, 2, 'a', 4.5, (5+2j), True)</code></pre>
 <p>　<br />
 Pythonのリスト型と最も似ているのはRではベクトル型です。</p>
-<div class="sourceCode" id="cb71" title="R"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb71-1" title="1">x &lt;-<span class="st"> </span><span class="kw">c</span>(1L, 2L, 3L)</a>
-<a class="sourceLine" id="cb71-2" title="2"><span class="kw">print</span>(<span class="kw">c</span>(x, <span class="kw">class</span>(x)))</a></code></pre></div>
+<div class="sourceCode" id="cb71" title="R"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb71-1" data-line-number="1">x &lt;-<span class="st"> </span><span class="kw">c</span>(1L, 2L, 3L)</a>
+<a class="sourceLine" id="cb71-2" data-line-number="2"><span class="kw">print</span>(<span class="kw">c</span>(x, <span class="kw">class</span>(x)))</a></code></pre></div>
 <pre><code>## [1] &quot;1&quot;       &quot;2&quot;       &quot;3&quot;       &quot;integer&quot;</code></pre>
 <p>ただし、異なるデータ型が混在した場合、Rでは強制型変換が行われ最上位のデータ型に統一されます。</p>
-<div class="sourceCode" id="cb73" title="R"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb73-1" title="1">x &lt;-<span class="st"> </span><span class="kw">c</span>(1L, <span class="dv">2</span>, <span class="dv">3</span><span class="op">+</span>5i, <span class="st">&quot;a&quot;</span>, <span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb73-2" title="2"><span class="kw">print</span>(<span class="kw">c</span>(x, <span class="kw">class</span>(x)))</a></code></pre></div>
+<div class="sourceCode" id="cb73" title="R"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb73-1" data-line-number="1">x &lt;-<span class="st"> </span><span class="kw">c</span>(1L, <span class="dv">2</span>, <span class="dv">3</span><span class="op">+</span>5i, <span class="st">&quot;a&quot;</span>, <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb73-2" data-line-number="2"><span class="kw">print</span>(<span class="kw">c</span>(x, <span class="kw">class</span>(x)))</a></code></pre></div>
 <pre><code>## [1] &quot;1&quot;         &quot;2&quot;         &quot;3+5i&quot;      &quot;a&quot;         &quot;TRUE&quot;      &quot;character&quot;</code></pre>
 <p>　</p>
 </div>
 <div id="タプル型tuple" class="section level3">
 <h3>タプル型（tuple）</h3>
 <p>Pythonのタプル型（<code>tuple</code>）はリスト型変数と同様のベクトル型の変数です。<code>tuple</code>関数、または、<code>()</code> オペレータを用います。リスト型との違いはデータ要素の変更ができない点です。データ要素の変更については後述します。</p>
-<div class="sourceCode" id="cb75" title="Python"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb75-1" title="1">x <span class="op">=</span> (<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>)</a>
-<a class="sourceLine" id="cb75-2" title="2"><span class="bu">print</span>(x, <span class="bu">type</span>(x), sep<span class="op">=</span><span class="st">&quot;, &quot;</span>)</a></code></pre></div>
-<pre><code>&gt;&gt; (1, 2, 3), &lt;class &#39;tuple&#39;&gt;</code></pre>
-<div class="sourceCode" id="cb77" title="Python"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb77-1" title="1">x <span class="op">=</span> <span class="bu">tuple</span>((<span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">8</span>))</a>
-<a class="sourceLine" id="cb77-2" title="2"><span class="bu">print</span>(x, <span class="bu">type</span>(x), sep<span class="op">=</span><span class="st">&quot;, &quot;</span>)</a></code></pre></div>
-<pre><code>&gt;&gt; (5, 6, 7, 8), &lt;class &#39;tuple&#39;&gt;</code></pre>
+<div class="sourceCode" id="cb75" title="Python"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb75-1" data-line-number="1">x <span class="op">=</span> (<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>)</a>
+<a class="sourceLine" id="cb75-2" data-line-number="2"><span class="bu">print</span>(x, <span class="bu">type</span>(x), sep<span class="op">=</span><span class="st">&quot;, &quot;</span>)</a></code></pre></div>
+<pre><code>&gt;&gt; (1, 2, 3), &lt;class 'tuple'&gt;</code></pre>
+<div class="sourceCode" id="cb77" title="Python"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb77-1" data-line-number="1">x <span class="op">=</span> <span class="bu">tuple</span>((<span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">8</span>))</a>
+<a class="sourceLine" id="cb77-2" data-line-number="2"><span class="bu">print</span>(x, <span class="bu">type</span>(x), sep<span class="op">=</span><span class="st">&quot;, &quot;</span>)</a></code></pre></div>
+<pre><code>&gt;&gt; (5, 6, 7, 8), &lt;class 'tuple'&gt;</code></pre>
 <p>タプル型をリスト型に変換することも可能です。</p>
-<div class="sourceCode" id="cb79" title="Python"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb79-1" title="1"><span class="bu">list</span>(x)</a></code></pre></div>
+<div class="sourceCode" id="cb79" title="Python"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb79-1" data-line-number="1"><span class="bu">list</span>(x)</a></code></pre></div>
 <pre><code>&gt;&gt; [5, 6, 7, 8]</code></pre>
 <p>　</p>
 </div>
 <div id="辞書型dict" class="section level3">
 <h3>辞書型（dict）</h3>
 <p>Pythonの辞書型（<code>dict</code>）は、キーと値の組み合わせでデータを管理するためのベクトル型変数です。<code>dict</code>関数または<code>{}</code>オペレータを用いて、<code>key:value</code>の組み合わせでキーと値を指定します。Rの因子型（factor）に似ていますがキーはユニークでなければならない点が異なります。また、値はリスト型やタプル型と同様異なるデータ型を混在させることが可能です。</p>
-<div class="sourceCode" id="cb81" title="Python"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb81-1" title="1">x <span class="op">=</span> {<span class="st">&quot;key1&quot;</span>:<span class="dv">1</span>, <span class="st">&quot;key2&quot;</span>:<span class="dv">2</span>, <span class="st">&quot;key3&quot;</span>:<span class="dv">3</span>}</a>
-<a class="sourceLine" id="cb81-2" title="2"><span class="bu">print</span>(x, <span class="bu">type</span>(x), sep<span class="op">=</span><span class="st">&quot;, &quot;</span>)</a></code></pre></div>
-<pre><code>&gt;&gt; {&#39;key1&#39;: 1, &#39;key2&#39;: 2, &#39;key3&#39;: 3}, &lt;class &#39;dict&#39;&gt;</code></pre>
-<div class="sourceCode" id="cb83" title="Python"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb83-1" title="1">x <span class="op">=</span> <span class="bu">dict</span>({<span class="st">&quot;key1&quot;</span>:<span class="dv">1</span>, <span class="st">&quot;key2&quot;</span>:<span class="dv">2</span>, <span class="st">&quot;key3&quot;</span>:<span class="dv">3</span>, <span class="st">&quot;key4&quot;</span>:<span class="st">&quot;key&quot;</span>})</a>
-<a class="sourceLine" id="cb83-2" title="2"><span class="bu">print</span>(x, <span class="bu">type</span>(x), sep<span class="op">=</span><span class="st">&quot;, &quot;</span>)</a></code></pre></div>
-<pre><code>&gt;&gt; {&#39;key1&#39;: 1, &#39;key2&#39;: 2, &#39;key3&#39;: 3, &#39;key4&#39;: &#39;key&#39;}, &lt;class &#39;dict&#39;&gt;</code></pre>
+<div class="sourceCode" id="cb81" title="Python"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb81-1" data-line-number="1">x <span class="op">=</span> {<span class="st">&quot;key1&quot;</span>:<span class="dv">1</span>, <span class="st">&quot;key2&quot;</span>:<span class="dv">2</span>, <span class="st">&quot;key3&quot;</span>:<span class="dv">3</span>}</a>
+<a class="sourceLine" id="cb81-2" data-line-number="2"><span class="bu">print</span>(x, <span class="bu">type</span>(x), sep<span class="op">=</span><span class="st">&quot;, &quot;</span>)</a></code></pre></div>
+<pre><code>&gt;&gt; {'key1': 1, 'key3': 3, 'key2': 2}, &lt;class 'dict'&gt;</code></pre>
+<div class="sourceCode" id="cb83" title="Python"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb83-1" data-line-number="1">x <span class="op">=</span> <span class="bu">dict</span>({<span class="st">&quot;key1&quot;</span>:<span class="dv">1</span>, <span class="st">&quot;key2&quot;</span>:<span class="dv">2</span>, <span class="st">&quot;key3&quot;</span>:<span class="dv">3</span>, <span class="st">&quot;key4&quot;</span>:<span class="st">&quot;key&quot;</span>})</a>
+<a class="sourceLine" id="cb83-2" data-line-number="2"><span class="bu">print</span>(x, <span class="bu">type</span>(x), sep<span class="op">=</span><span class="st">&quot;, &quot;</span>)</a></code></pre></div>
+<pre><code>&gt;&gt; {'key1': 1, 'key4': 'key', 'key3': 3, 'key2': 2}, &lt;class 'dict'&gt;</code></pre>
 <p>Rの因子型はデータからユニークキーを作成しますので、似ていますが非なるものと言えます。</p>
-<div class="sourceCode" id="cb85" title="R"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb85-1" title="1">x &lt;-<span class="st"> </span><span class="kw">factor</span>(<span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">5</span>))</a>
-<a class="sourceLine" id="cb85-2" title="2">x</a></code></pre></div>
+<div class="sourceCode" id="cb85" title="R"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb85-1" data-line-number="1">x &lt;-<span class="st"> </span><span class="kw">factor</span>(<span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">5</span>))</a>
+<a class="sourceLine" id="cb85-2" data-line-number="2">x</a></code></pre></div>
 <pre><code>## [1] 1 2 3 1 5
 ## Levels: 1 2 3 5</code></pre>
 <p>　</p>
@@ -3249,17 +3250,17 @@ Pythonのリスト型と最も似ているのはRではベクトル型です。<
 <div id="集合型set" class="section level3">
 <h3>集合型（set）</h3>
 <p>Pythonの集合型（<code>set</code>）は、<code>set</code>関数または<code>{}</code>を使って作成します。重複するデータを指定してもユニークなデータを変数として変数に格納します。文字列を指定した場合は一文字つづに分解して格納します。</p>
-<div class="sourceCode" id="cb87" title="Python"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb87-1" title="1">x <span class="op">=</span> {<span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">1</span>}</a>
-<a class="sourceLine" id="cb87-2" title="2"><span class="bu">print</span>(x, <span class="bu">type</span>(x), sep<span class="op">=</span><span class="st">&quot;, &quot;</span>)</a></code></pre></div>
-<pre><code>&gt;&gt; {1, 2, 3, 4, 5}, &lt;class &#39;set&#39;&gt;</code></pre>
-<div class="sourceCode" id="cb89" title="Python"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb89-1" title="1">x <span class="op">=</span> <span class="bu">set</span>(<span class="st">&quot;strings&quot;</span>)</a>
-<a class="sourceLine" id="cb89-2" title="2"><span class="bu">print</span>(x, <span class="bu">type</span>(x), sep<span class="op">=</span><span class="st">&quot;, &quot;</span>)</a></code></pre></div>
-<pre><code>&gt;&gt; {&#39;r&#39;, &#39;g&#39;, &#39;t&#39;, &#39;i&#39;, &#39;s&#39;, &#39;n&#39;}, &lt;class &#39;set&#39;&gt;</code></pre>
+<div class="sourceCode" id="cb87" title="Python"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb87-1" data-line-number="1">x <span class="op">=</span> {<span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">1</span>}</a>
+<a class="sourceLine" id="cb87-2" data-line-number="2"><span class="bu">print</span>(x, <span class="bu">type</span>(x), sep<span class="op">=</span><span class="st">&quot;, &quot;</span>)</a></code></pre></div>
+<pre><code>&gt;&gt; {1, 2, 3, 4, 5}, &lt;class 'set'&gt;</code></pre>
+<div class="sourceCode" id="cb89" title="Python"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb89-1" data-line-number="1">x <span class="op">=</span> <span class="bu">set</span>(<span class="st">&quot;strings&quot;</span>)</a>
+<a class="sourceLine" id="cb89-2" data-line-number="2"><span class="bu">print</span>(x, <span class="bu">type</span>(x), sep<span class="op">=</span><span class="st">&quot;, &quot;</span>)</a></code></pre></div>
+<pre><code>&gt;&gt; {'i', 'r', 'n', 't', 's', 'g'}, &lt;class 'set'&gt;</code></pre>
 <p>Rの <code>levels</code> 関数や <code>uniqe</code> 関数での処理結果に近いと言えます。</p>
-<div class="sourceCode" id="cb91" title="R"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb91-1" title="1">x &lt;-<span class="st"> </span><span class="kw">factor</span>(<span class="kw">c</span>(<span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">1</span>))</a>
-<a class="sourceLine" id="cb91-2" title="2"><span class="kw">levels</span>(x)</a></code></pre></div>
+<div class="sourceCode" id="cb91" title="R"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb91-1" data-line-number="1">x &lt;-<span class="st"> </span><span class="kw">factor</span>(<span class="kw">c</span>(<span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">1</span>))</a>
+<a class="sourceLine" id="cb91-2" data-line-number="2"><span class="kw">levels</span>(x)</a></code></pre></div>
 <pre><code>## [1] &quot;1&quot; &quot;2&quot; &quot;3&quot; &quot;4&quot; &quot;5&quot;</code></pre>
-<div class="sourceCode" id="cb93" title="R"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb93-1" title="1"><span class="kw">unique</span>(<span class="kw">c</span>(<span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">1</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb93" title="R"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb93-1" data-line-number="1"><span class="kw">unique</span>(<span class="kw">c</span>(<span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">1</span>))</a></code></pre></div>
 <pre><code>## [1] 4 2 3 1 5</code></pre>
 <p>　</p>
 </div>
@@ -3295,16 +3296,16 @@ Pythonのリスト型と最も似ているのはRではベクトル型です。<
 </tr>
 </tbody>
 </table>
-<div class="sourceCode" id="cb95" title="Python"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb95-1" title="1">x <span class="op">=</span> <span class="dv">3</span></a>
-<a class="sourceLine" id="cb95-2" title="2"><span class="bu">print</span>(<span class="op">-</span>x, <span class="bu">type</span>(<span class="op">-</span>x), sep<span class="op">=</span><span class="st">&quot;, &quot;</span>)</a></code></pre></div>
-<pre><code>&gt;&gt; -3, &lt;class &#39;int&#39;&gt;</code></pre>
-<div class="sourceCode" id="cb97" title="Python"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb97-1" title="1"><span class="kw">not</span>(<span class="va">True</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb95" title="Python"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb95-1" data-line-number="1">x <span class="op">=</span> <span class="dv">3</span></a>
+<a class="sourceLine" id="cb95-2" data-line-number="2"><span class="bu">print</span>(<span class="op">-</span>x, <span class="bu">type</span>(<span class="op">-</span>x), sep<span class="op">=</span><span class="st">&quot;, &quot;</span>)</a></code></pre></div>
+<pre><code>&gt;&gt; -3, &lt;class 'int'&gt;</code></pre>
+<div class="sourceCode" id="cb97" title="Python"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb97-1" data-line-number="1"><span class="kw">not</span>(<span class="va">True</span>)</a></code></pre></div>
 <pre><code>&gt;&gt; False</code></pre>
 <p>Rも同様の動きになります。</p>
-<div class="sourceCode" id="cb99" title="R"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb99-1" title="1">x &lt;-<span class="st"> </span>3L</a>
-<a class="sourceLine" id="cb99-2" title="2"><span class="kw">print</span>(<span class="kw">c</span>(<span class="op">-</span>x, <span class="kw">class</span>(<span class="op">-</span>x)))</a></code></pre></div>
+<div class="sourceCode" id="cb99" title="R"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb99-1" data-line-number="1">x &lt;-<span class="st"> </span>3L</a>
+<a class="sourceLine" id="cb99-2" data-line-number="2"><span class="kw">print</span>(<span class="kw">c</span>(<span class="op">-</span>x, <span class="kw">class</span>(<span class="op">-</span>x)))</a></code></pre></div>
 <pre><code>## [1] &quot;-3&quot;      &quot;integer&quot;</code></pre>
-<div class="sourceCode" id="cb101" title="R"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb101-1" title="1"><span class="op">!</span><span class="ot">TRUE</span></a></code></pre></div>
+<div class="sourceCode" id="cb101" title="R"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb101-1" data-line-number="1"><span class="op">!</span><span class="ot">TRUE</span></a></code></pre></div>
 <pre><code>## [1] FALSE</code></pre>
 <p>　</p>
 </div>
@@ -3388,19 +3389,19 @@ Pythonのリスト型と最も似ているのはRではベクトル型です。<
 </tr>
 </tbody>
 </table>
-<div class="sourceCode" id="cb103" title="Python"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb103-1" title="1"><span class="dv">1</span> <span class="op">+</span> <span class="dv">2</span></a></code></pre></div>
+<div class="sourceCode" id="cb103" title="Python"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb103-1" data-line-number="1"><span class="dv">1</span> <span class="op">+</span> <span class="dv">2</span></a></code></pre></div>
 <pre><code>&gt;&gt; 3</code></pre>
-<div class="sourceCode" id="cb105" title="Python"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb105-1" title="1"><span class="dv">2</span> <span class="op">-</span> <span class="dv">3</span></a></code></pre></div>
+<div class="sourceCode" id="cb105" title="Python"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb105-1" data-line-number="1"><span class="dv">2</span> <span class="op">-</span> <span class="dv">3</span></a></code></pre></div>
 <pre><code>&gt;&gt; -1</code></pre>
-<div class="sourceCode" id="cb107" title="Python"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb107-1" title="1"><span class="dv">3</span> <span class="op">*</span> <span class="dv">4</span></a></code></pre></div>
+<div class="sourceCode" id="cb107" title="Python"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb107-1" data-line-number="1"><span class="dv">3</span> <span class="op">*</span> <span class="dv">4</span></a></code></pre></div>
 <pre><code>&gt;&gt; 12</code></pre>
-<div class="sourceCode" id="cb109" title="Python"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb109-1" title="1"><span class="dv">5</span> <span class="op">/</span> <span class="dv">6</span></a></code></pre></div>
+<div class="sourceCode" id="cb109" title="Python"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb109-1" data-line-number="1"><span class="dv">5</span> <span class="op">/</span> <span class="dv">6</span></a></code></pre></div>
 <pre><code>&gt;&gt; 0.8333333333333334</code></pre>
-<div class="sourceCode" id="cb111" title="Python"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb111-1" title="1"><span class="dv">6</span> <span class="op">**</span> <span class="dv">7</span></a></code></pre></div>
+<div class="sourceCode" id="cb111" title="Python"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb111-1" data-line-number="1"><span class="dv">6</span> <span class="op">**</span> <span class="dv">7</span></a></code></pre></div>
 <pre><code>&gt;&gt; 279936</code></pre>
-<div class="sourceCode" id="cb113" title="Python"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb113-1" title="1"><span class="dv">7</span> <span class="op">%</span> <span class="dv">8</span></a></code></pre></div>
+<div class="sourceCode" id="cb113" title="Python"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb113-1" data-line-number="1"><span class="dv">7</span> <span class="op">%</span> <span class="dv">8</span></a></code></pre></div>
 <pre><code>&gt;&gt; 7</code></pre>
-<div class="sourceCode" id="cb115" title="Python"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb115-1" title="1"><span class="dv">10</span> <span class="op">//</span> <span class="dv">3</span></a></code></pre></div>
+<div class="sourceCode" id="cb115" title="Python"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb115-1" data-line-number="1"><span class="dv">10</span> <span class="op">//</span> <span class="dv">3</span></a></code></pre></div>
 <pre><code>&gt;&gt; 3</code></pre>
 <p>Rの算術演算子につていは省略します。</p>
 <p>　</p>
@@ -3447,17 +3448,17 @@ Pythonのリスト型と最も似ているのはRではベクトル型です。<
 </tr>
 </tbody>
 </table>
-<div class="sourceCode" id="cb117" title="Python"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb117-1" title="1"><span class="dv">1</span> <span class="op">&gt;</span> <span class="dv">2</span></a></code></pre></div>
+<div class="sourceCode" id="cb117" title="Python"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb117-1" data-line-number="1"><span class="dv">1</span> <span class="op">&gt;</span> <span class="dv">2</span></a></code></pre></div>
 <pre><code>&gt;&gt; False</code></pre>
-<div class="sourceCode" id="cb119" title="Python"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb119-1" title="1"><span class="dv">2</span> <span class="op">&lt;</span> <span class="dv">3</span></a></code></pre></div>
+<div class="sourceCode" id="cb119" title="Python"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb119-1" data-line-number="1"><span class="dv">2</span> <span class="op">&lt;</span> <span class="dv">3</span></a></code></pre></div>
 <pre><code>&gt;&gt; True</code></pre>
-<div class="sourceCode" id="cb121" title="Python"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb121-1" title="1"><span class="dv">3</span> <span class="op">&gt;=</span> <span class="dv">4</span></a></code></pre></div>
+<div class="sourceCode" id="cb121" title="Python"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb121-1" data-line-number="1"><span class="dv">3</span> <span class="op">&gt;=</span> <span class="dv">4</span></a></code></pre></div>
 <pre><code>&gt;&gt; False</code></pre>
-<div class="sourceCode" id="cb123" title="Python"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb123-1" title="1"><span class="dv">4</span> <span class="op">&lt;=</span> <span class="dv">5</span></a></code></pre></div>
+<div class="sourceCode" id="cb123" title="Python"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb123-1" data-line-number="1"><span class="dv">4</span> <span class="op">&lt;=</span> <span class="dv">5</span></a></code></pre></div>
 <pre><code>&gt;&gt; True</code></pre>
-<div class="sourceCode" id="cb125" title="Python"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb125-1" title="1"><span class="dv">5</span> <span class="op">==</span> <span class="dv">6</span></a></code></pre></div>
+<div class="sourceCode" id="cb125" title="Python"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb125-1" data-line-number="1"><span class="dv">5</span> <span class="op">==</span> <span class="dv">6</span></a></code></pre></div>
 <pre><code>&gt;&gt; False</code></pre>
-<div class="sourceCode" id="cb127" title="Python"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb127-1" title="1"><span class="dv">6</span> <span class="op">!=</span> <span class="dv">7</span></a></code></pre></div>
+<div class="sourceCode" id="cb127" title="Python"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb127-1" data-line-number="1"><span class="dv">6</span> <span class="op">!=</span> <span class="dv">7</span></a></code></pre></div>
 <pre><code>&gt;&gt; True</code></pre>
 <p>Rの比較演算子につていは省略します。</p>
 <p>　</p>
@@ -3495,11 +3496,11 @@ Pythonのリスト型と最も似ているのはRではベクトル型です。<
 </tr>
 </tbody>
 </table>
-<div class="sourceCode" id="cb129" title="Python"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb129-1" title="1"><span class="dv">1</span> <span class="kw">and</span> <span class="dv">0</span></a></code></pre></div>
+<div class="sourceCode" id="cb129" title="Python"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb129-1" data-line-number="1"><span class="dv">1</span> <span class="kw">and</span> <span class="dv">0</span></a></code></pre></div>
 <pre><code>&gt;&gt; 0</code></pre>
-<div class="sourceCode" id="cb131" title="Python"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb131-1" title="1"><span class="dv">1</span> <span class="kw">or</span> <span class="dv">0</span></a></code></pre></div>
+<div class="sourceCode" id="cb131" title="Python"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb131-1" data-line-number="1"><span class="dv">1</span> <span class="kw">or</span> <span class="dv">0</span></a></code></pre></div>
 <pre><code>&gt;&gt; 1</code></pre>
-<div class="sourceCode" id="cb133" title="Python"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb133-1" title="1"><span class="kw">not</span> <span class="dv">0</span></a></code></pre></div>
+<div class="sourceCode" id="cb133" title="Python"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb133-1" data-line-number="1"><span class="kw">not</span> <span class="dv">0</span></a></code></pre></div>
 <pre><code>&gt;&gt; True</code></pre>
 <p>Rの論理演算子については省略します。</p>
 <p>　</p>
@@ -3538,64 +3539,64 @@ Pythonのリスト型と最も似ているのはRではベクトル型です。<
 </tbody>
 </table>
 <p>　</p>
-<div class="sourceCode" id="cb135" title="Python"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb135-1" title="1">x <span class="op">=</span> <span class="bu">list</span>([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>, <span class="dv">10</span>])</a>
-<a class="sourceLine" id="cb135-2" title="2">x</a></code></pre></div>
+<div class="sourceCode" id="cb135" title="Python"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb135-1" data-line-number="1">x <span class="op">=</span> <span class="bu">list</span>([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>, <span class="dv">10</span>])</a>
+<a class="sourceLine" id="cb135-2" data-line-number="2">x</a></code></pre></div>
 <pre><code>&gt;&gt; [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]</code></pre>
-<div class="sourceCode" id="cb137" title="Python"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb137-1" title="1">x[<span class="dv">0</span>]</a></code></pre></div>
+<div class="sourceCode" id="cb137" title="Python"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb137-1" data-line-number="1">x[<span class="dv">0</span>]</a></code></pre></div>
 <pre><code>&gt;&gt; 1</code></pre>
-<div class="sourceCode" id="cb139" title="Python"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb139-1" title="1">x[<span class="dv">0</span>:<span class="dv">3</span>]</a></code></pre></div>
+<div class="sourceCode" id="cb139" title="Python"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb139-1" data-line-number="1">x[<span class="dv">0</span>:<span class="dv">3</span>]</a></code></pre></div>
 <pre><code>&gt;&gt; [1, 2, 3]</code></pre>
-<div class="sourceCode" id="cb141" title="Python"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb141-1" title="1">x[<span class="dv">5</span>:]</a></code></pre></div>
+<div class="sourceCode" id="cb141" title="Python"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb141-1" data-line-number="1">x[<span class="dv">5</span>:]</a></code></pre></div>
 <pre><code>&gt;&gt; [6, 7, 8, 9, 10]</code></pre>
-<div class="sourceCode" id="cb143" title="Python"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb143-1" title="1">x[:<span class="dv">4</span>]</a></code></pre></div>
+<div class="sourceCode" id="cb143" title="Python"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb143-1" data-line-number="1">x[:<span class="dv">4</span>]</a></code></pre></div>
 <pre><code>&gt;&gt; [1, 2, 3, 4]</code></pre>
-<div class="sourceCode" id="cb145" title="Python"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb145-1" title="1">x[<span class="dv">0</span>:<span class="dv">10</span>:<span class="dv">2</span>]</a></code></pre></div>
+<div class="sourceCode" id="cb145" title="Python"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb145-1" data-line-number="1">x[<span class="dv">0</span>:<span class="dv">10</span>:<span class="dv">2</span>]</a></code></pre></div>
 <pre><code>&gt;&gt; [1, 3, 5, 7, 9]</code></pre>
 <p>　<br />
 Rでも同様の参照が可能ですがインデックスは <span class="math inline">\(1\)</span> から始まります。なお、Pythonのような凝った参照はできません。</p>
-<div class="sourceCode" id="cb147" title="R"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb147-1" title="1">x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">9</span>, <span class="dv">10</span>)</a>
-<a class="sourceLine" id="cb147-2" title="2">x</a></code></pre></div>
+<div class="sourceCode" id="cb147" title="R"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb147-1" data-line-number="1">x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">9</span>, <span class="dv">10</span>)</a>
+<a class="sourceLine" id="cb147-2" data-line-number="2">x</a></code></pre></div>
 <pre><code>##  [1]  1  2  3  4  5  6  7  8  9 10</code></pre>
-<div class="sourceCode" id="cb149" title="R"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb149-1" title="1">x[<span class="dv">1</span>]</a></code></pre></div>
+<div class="sourceCode" id="cb149" title="R"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb149-1" data-line-number="1">x[<span class="dv">1</span>]</a></code></pre></div>
 <pre><code>## [1] 1</code></pre>
-<div class="sourceCode" id="cb151" title="R"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb151-1" title="1">x[<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>]</a></code></pre></div>
+<div class="sourceCode" id="cb151" title="R"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb151-1" data-line-number="1">x[<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>]</a></code></pre></div>
 <pre><code>## [1] 1 2 3</code></pre>
 <p>　</p>
 <div id="マイナス参照" class="section level3">
 <h3>マイナス参照</h3>
 <p>参照演算子のインデックスにRと同様にマイナス値を指定することが可能でが、参照結果はまったく異なりますので注意が必要です。Pythonで参照演算子にマイナス値を指定した場合は要素の後ろからの参照になります。</p>
-<div class="sourceCode" id="cb153" title="Python"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb153-1" title="1">x</a></code></pre></div>
+<div class="sourceCode" id="cb153" title="Python"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb153-1" data-line-number="1">x</a></code></pre></div>
 <pre><code>&gt;&gt; [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]</code></pre>
-<div class="sourceCode" id="cb155" title="Python"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb155-1" title="1">x[<span class="op">-</span><span class="dv">1</span>]</a></code></pre></div>
+<div class="sourceCode" id="cb155" title="Python"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb155-1" data-line-number="1">x[<span class="op">-</span><span class="dv">1</span>]</a></code></pre></div>
 <pre><code>&gt;&gt; 10</code></pre>
-<div class="sourceCode" id="cb157" title="Python"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb157-1" title="1">x[<span class="op">-</span><span class="dv">10</span>]</a></code></pre></div>
+<div class="sourceCode" id="cb157" title="Python"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb157-1" data-line-number="1">x[<span class="op">-</span><span class="dv">10</span>]</a></code></pre></div>
 <pre><code>&gt;&gt; 1</code></pre>
 <p>Rで参照演算子にマイナス値を指定した場合は該当箇所の要素を削除します。</p>
-<div class="sourceCode" id="cb159" title="R"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb159-1" title="1">x</a></code></pre></div>
+<div class="sourceCode" id="cb159" title="R"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb159-1" data-line-number="1">x</a></code></pre></div>
 <pre><code>##  [1]  1  2  3  4  5  6  7  8  9 10</code></pre>
-<div class="sourceCode" id="cb161" title="R"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb161-1" title="1">x[<span class="op">-</span><span class="dv">1</span>]</a></code></pre></div>
+<div class="sourceCode" id="cb161" title="R"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb161-1" data-line-number="1">x[<span class="op">-</span><span class="dv">1</span>]</a></code></pre></div>
 <pre><code>## [1]  2  3  4  5  6  7  8  9 10</code></pre>
 <p>　</p>
 </div>
 <div id="要素の変更" class="section level3">
 <h3>要素の変更</h3>
 <p>Pythonでは参照演算子を用いて任意の要素を変更することができます。</p>
-<div class="sourceCode" id="cb163" title="Python"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb163-1" title="1">x <span class="op">=</span> <span class="bu">list</span>([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>, <span class="dv">10</span>])</a>
-<a class="sourceLine" id="cb163-2" title="2"><span class="bu">print</span>(x)</a></code></pre></div>
+<div class="sourceCode" id="cb163" title="Python"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb163-1" data-line-number="1">x <span class="op">=</span> <span class="bu">list</span>([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>, <span class="dv">10</span>])</a>
+<a class="sourceLine" id="cb163-2" data-line-number="2"><span class="bu">print</span>(x)</a></code></pre></div>
 <pre><code>&gt;&gt; [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]</code></pre>
-<div class="sourceCode" id="cb165" title="Python"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb165-1" title="1">x[<span class="op">-</span><span class="dv">1</span>] <span class="op">=</span> <span class="dv">0</span></a>
-<a class="sourceLine" id="cb165-2" title="2"><span class="bu">print</span>(x)</a></code></pre></div>
+<div class="sourceCode" id="cb165" title="Python"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb165-1" data-line-number="1">x[<span class="op">-</span><span class="dv">1</span>] <span class="op">=</span> <span class="dv">0</span></a>
+<a class="sourceLine" id="cb165-2" data-line-number="2"><span class="bu">print</span>(x)</a></code></pre></div>
 <pre><code>&gt;&gt; [1, 2, 3, 4, 5, 6, 7, 8, 9, 0]</code></pre>
 <p>なお、前述のようにタプル型では要素の変更はできません。</p>
-<div class="sourceCode" id="cb167" title="Python"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb167-1" title="1">x <span class="op">=</span> <span class="bu">tuple</span>((<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>, <span class="dv">10</span>))</a>
-<a class="sourceLine" id="cb167-2" title="2"><span class="bu">print</span>(x)</a></code></pre></div>
+<div class="sourceCode" id="cb167" title="Python"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb167-1" data-line-number="1">x <span class="op">=</span> <span class="bu">tuple</span>((<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>, <span class="dv">10</span>))</a>
+<a class="sourceLine" id="cb167-2" data-line-number="2"><span class="bu">print</span>(x)</a></code></pre></div>
 <pre><code>&gt;&gt; (1, 2, 3, 4, 5, 6, 7, 8, 9, 10)</code></pre>
-<div class="sourceCode" id="cb169" title="Python"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb169-1" title="1">x[<span class="op">-</span><span class="dv">1</span>] <span class="op">=</span> <span class="dv">0</span></a></code></pre></div>
-<pre><code>&gt;&gt; Error in py_call_impl(callable, dots$args, dots$keywords): TypeError: &#39;tuple&#39; object does not support item assignment
+<div class="sourceCode" id="cb169" title="Python"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb169-1" data-line-number="1">x[<span class="op">-</span><span class="dv">1</span>] <span class="op">=</span> <span class="dv">0</span></a></code></pre></div>
+<pre><code>&gt;&gt; Error in py_call_impl(callable, dots$args, dots$keywords): TypeError: 'tuple' object does not support item assignment
 &gt;&gt; 
 &gt;&gt; Detailed traceback: 
 &gt;&gt;   File &quot;&lt;string&gt;&quot;, line 1, in &lt;module&gt;</code></pre>
-<div class="sourceCode" id="cb171" title="Python"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb171-1" title="1"><span class="bu">print</span>(x)</a></code></pre></div>
+<div class="sourceCode" id="cb171" title="Python"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb171-1" data-line-number="1"><span class="bu">print</span>(x)</a></code></pre></div>
 <pre><code>&gt;&gt; (1, 2, 3, 4, 5, 6, 7, 8, 9, 10)</code></pre>
 <p>　</p>
 </div>
@@ -3604,24 +3605,24 @@ Rでも同様の参照が可能ですがインデックスは <span class="math 
 <div id="ベクトル演算" class="section level1">
 <h1>ベクトル演算</h1>
 <p>Rではベクトル演算が可能ですが、Pythonでベクトル演算はできません。Pythonの <code>+</code> 演算子はベクトル型変数を結合するだけです。</p>
-<div class="sourceCode" id="cb173" title="Python"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb173-1" title="1"><span class="op">-</span><span class="bu">list</span>([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>])</a></code></pre></div>
-<pre><code>&gt;&gt; Error in py_call_impl(callable, dots$args, dots$keywords): TypeError: bad operand type for unary -: &#39;list&#39;
+<div class="sourceCode" id="cb173" title="Python"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb173-1" data-line-number="1"><span class="op">-</span><span class="bu">list</span>([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>])</a></code></pre></div>
+<pre><code>&gt;&gt; Error in py_call_impl(callable, dots$args, dots$keywords): TypeError: bad operand type for unary -: 'list'
 &gt;&gt; 
 &gt;&gt; Detailed traceback: 
 &gt;&gt;   File &quot;&lt;string&gt;&quot;, line 1, in &lt;module&gt;</code></pre>
-<div class="sourceCode" id="cb175" title="Python"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb175-1" title="1"><span class="bu">list</span>([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>]) <span class="op">+</span> <span class="bu">list</span>([<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>])</a></code></pre></div>
+<div class="sourceCode" id="cb175" title="Python"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb175-1" data-line-number="1"><span class="bu">list</span>([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>]) <span class="op">+</span> <span class="bu">list</span>([<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>])</a></code></pre></div>
 <pre><code>&gt;&gt; [1, 2, 3, 4, 5, 6]</code></pre>
-<div class="sourceCode" id="cb177" title="Python"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb177-1" title="1"><span class="bu">list</span>([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>]) <span class="op">-</span> <span class="bu">list</span>([<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>])</a></code></pre></div>
-<pre><code>&gt;&gt; Error in py_call_impl(callable, dots$args, dots$keywords): TypeError: unsupported operand type(s) for -: &#39;list&#39; and &#39;list&#39;
+<div class="sourceCode" id="cb177" title="Python"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb177-1" data-line-number="1"><span class="bu">list</span>([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>]) <span class="op">-</span> <span class="bu">list</span>([<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>])</a></code></pre></div>
+<pre><code>&gt;&gt; Error in py_call_impl(callable, dots$args, dots$keywords): TypeError: unsupported operand type(s) for -: 'list' and 'list'
 &gt;&gt; 
 &gt;&gt; Detailed traceback: 
 &gt;&gt;   File &quot;&lt;string&gt;&quot;, line 1, in &lt;module&gt;</code></pre>
 <p>一方、Rはベクトル演算が可能です。</p>
-<div class="sourceCode" id="cb179" title="R"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb179-1" title="1"><span class="op">-</span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb179" title="R"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb179-1" data-line-number="1"><span class="op">-</span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>)</a></code></pre></div>
 <pre><code>## [1] -1 -2 -3</code></pre>
-<div class="sourceCode" id="cb181" title="R"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb181-1" title="1"><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>) <span class="op">+</span><span class="st"> </span><span class="kw">c</span>(<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb181" title="R"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb181-1" data-line-number="1"><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>) <span class="op">+</span><span class="st"> </span><span class="kw">c</span>(<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>)</a></code></pre></div>
 <pre><code>## [1] 5 7 9</code></pre>
-<div class="sourceCode" id="cb183" title="R"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb183-1" title="1"><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>) <span class="op">-</span><span class="st"> </span><span class="kw">c</span>(<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb183" title="R"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb183-1" data-line-number="1"><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>) <span class="op">-</span><span class="st"> </span><span class="kw">c</span>(<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>)</a></code></pre></div>
 <pre><code>## [1] -3 -3 -3</code></pre>
 <p>　</p>
 <hr />

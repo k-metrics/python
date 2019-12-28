@@ -7,4 +7,4 @@ output: github_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-* [Python Basics - 変数の基本](https://k-metrics.github.io/python/basics.html)
+* [Python Basics - 変数と演算子の基本](https://k-metrics.github.io/python/basics.html)

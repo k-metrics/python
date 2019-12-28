@@ -2930,6 +2930,11 @@ div.tocify {
 <p>Python勉強会のまとめです。Rと比較する形でまとめています。コーディングスタイルはRのtidyverse style guideに準拠しています。<br />
 実行結果のプロンプトをPythonの場合は <strong><code>&gt;&gt;</code></strong> 、Rの場合は <strong><code>##</code></strong> としています。</p>
 <p>　</p>
+<div id="変数と演算子の基本" class="section level1">
+<h1>変数と演算子の基本</h1>
+<p>本ページでは（素の）Pythonの変数と演算子の基本的な事項をRと比較しながらまとめています。</p>
+<p>　</p>
+</div>
 <div id="変数" class="section level1">
 <h1>変数</h1>
 <p>Pythonの変数はRと同様にC言語のような変数宣言をする必要はありません。利用したい変数に直接、値（データ）を代入することで任意の変数が作成できます。例えば整数値をもつ変数は以下のように作成します。</p>
@@ -3251,10 +3256,10 @@ Pythonのリスト型と最も似ているのはRではベクトル型です。<
 <p>Pythonの辞書型（<code>dict</code>）は、キーと値の組み合わせでデータを管理するためのベクトル型変数です。<code>dict</code>関数または<code>{}</code>オペレータを用いて、<code>key:value</code>の組み合わせでキーと値を指定します。Rの因子型（factor）に似ていますがキーはユニークでなければならない点が異なります。また、値はリスト型やタプル型と同様異なるデータ型を混在させることが可能です。</p>
 <div class="sourceCode" id="cb81" title="辞書型の基本"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb81-1" data-line-number="1">x <span class="op">=</span> {<span class="st">&quot;key1&quot;</span>:<span class="dv">1</span>, <span class="st">&quot;key2&quot;</span>:<span class="dv">2</span>, <span class="st">&quot;key3&quot;</span>:<span class="dv">3</span>}</a>
 <a class="sourceLine" id="cb81-2" data-line-number="2"><span class="bu">print</span>(x, <span class="bu">type</span>(x), sep<span class="op">=</span><span class="st">&quot;, &quot;</span>)</a></code></pre></div>
-<pre><code>&gt;&gt; {'key1': 1, 'key2': 2, 'key3': 3}, &lt;class 'dict'&gt;</code></pre>
+<pre><code>&gt;&gt; {'key2': 2, 'key1': 1, 'key3': 3}, &lt;class 'dict'&gt;</code></pre>
 <div class="sourceCode" id="cb83" title="辞書型の基本"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb83-1" data-line-number="1">x <span class="op">=</span> <span class="bu">dict</span>({<span class="st">&quot;key1&quot;</span>:<span class="dv">1</span>, <span class="st">&quot;key2&quot;</span>:<span class="dv">2</span>, <span class="st">&quot;key3&quot;</span>:<span class="dv">3</span>, <span class="st">&quot;key4&quot;</span>:<span class="st">&quot;key&quot;</span>})</a>
 <a class="sourceLine" id="cb83-2" data-line-number="2"><span class="bu">print</span>(x, <span class="bu">type</span>(x), sep<span class="op">=</span><span class="st">&quot;, &quot;</span>)</a></code></pre></div>
-<pre><code>&gt;&gt; {'key1': 1, 'key4': 'key', 'key2': 2, 'key3': 3}, &lt;class 'dict'&gt;</code></pre>
+<pre><code>&gt;&gt; {'key2': 2, 'key1': 1, 'key4': 'key', 'key3': 3}, &lt;class 'dict'&gt;</code></pre>
 <p>Rの因子型はデータからユニークキーを作成しますので、似ていますが非なるものと言えます。</p>
 <div class="sourceCode" id="cb85" title="似て非なる因子型"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb85-1" data-line-number="1">x &lt;-<span class="st"> </span><span class="kw">factor</span>(<span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">5</span>))</a>
 <a class="sourceLine" id="cb85-2" data-line-number="2">x</a></code></pre></div>
@@ -3270,7 +3275,7 @@ Pythonのリスト型と最も似ているのはRではベクトル型です。<
 <pre><code>&gt;&gt; {1, 2, 3, 4, 5}, &lt;class 'set'&gt;</code></pre>
 <div class="sourceCode" id="cb89" title="集合型の基本"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb89-1" data-line-number="1">x <span class="op">=</span> <span class="bu">set</span>(<span class="st">&quot;strings&quot;</span>)</a>
 <a class="sourceLine" id="cb89-2" data-line-number="2"><span class="bu">print</span>(x, <span class="bu">type</span>(x), sep<span class="op">=</span><span class="st">&quot;, &quot;</span>)</a></code></pre></div>
-<pre><code>&gt;&gt; {'i', 'g', 't', 's', 'n', 'r'}, &lt;class 'set'&gt;</code></pre>
+<pre><code>&gt;&gt; {'r', 'i', 's', 'g', 't', 'n'}, &lt;class 'set'&gt;</code></pre>
 <p>Rの <code>levels</code> 関数や <code>uniqe</code> 関数での処理結果に近いと言えます。</p>
 <div class="sourceCode" id="cb91" title="考え方が逆？"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb91-1" data-line-number="1">x &lt;-<span class="st"> </span><span class="kw">factor</span>(<span class="kw">c</span>(<span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">1</span>))</a>
 <a class="sourceLine" id="cb91-2" data-line-number="2"><span class="kw">levels</span>(x)</a></code></pre></div>
